@@ -1,0 +1,21 @@
+%html
+  %head
+    %title= "\"#{@item[:title]}\""
+  %body
+    %div#main= yield
+    %div#sidebar
+      %ul
+        %li Link1
+        %li Link2
+      %p= @items.size
+      %ul
+      -@items.each do |i|
+        %li= "#{i[:title]} #{i[:parent]} #{i[:children]} '#{i.parent == nil}'"
+      - home_page = @items.find { |i| i.reps[0].path == '/' }
+      %p= home_page[:title]
+      %ol
+        %li= link_to(home_page[:title], home_page.reps[0])
+        %li= home_page.children.size
+        - home_page.children.each do |page|
+          %li= "#{link_to(page[:title], page.reps[0])}, #{home_page.children.size}"
+    %p= link_to('child', '/foo/bar/')

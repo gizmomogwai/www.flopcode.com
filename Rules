@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require 'haml'
+
+compile '*' do
+  filter :erb
+  layout 'default'
+end
+
+route '*' do
+  item.identifier + 'index.html'
+end
+
+layout '*', :haml
