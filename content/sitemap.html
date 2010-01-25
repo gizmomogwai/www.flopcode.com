@@ -1,0 +1,4 @@
+- root = @items.find {|i|i.identifier == '/'}
+%ul= traverse_items([root])
+%ul
+  %li= root.children.size
