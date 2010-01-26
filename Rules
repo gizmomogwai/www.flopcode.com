@@ -4,6 +4,7 @@ require 'haml'
 compile '*' do
   filter :haml
   layout 'default'
+  filter :relativize_paths, :type => :html
 end
 
 route '*' do
