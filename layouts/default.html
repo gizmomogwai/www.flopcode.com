@@ -1,17 +1,22 @@
 %html
   %head
     %title= "\"#{@item[:title]}\""
-  %body
-    %div#main= yield
-    %div#sidebar
-      %p sidebar
-      %p
-      %ul
-        - if @item[:parent] != nil
-          - parent = @items.find{|i| i.identifier == @item[:parent]}
-          %li= link_to(parent[:title], parent.identifier)
-        %li= @item[:title]
-        %ul
-          - @item.children.each do |child|
-            %li= link_to(child[:title], child.reps[0])
-      %ul= link_to('sitemap', '/sitemap/')
+    %script{:type=>"text/javascript", :src=>"/jquery-1.4.1.min.js"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
+  %body{:background=>"lightgrey"}
+    %div#all
+      %div#nav
+        - print_parents(@item, @items) do |i|
+          = link_to(i[:title], i.identifier)
+        %div.selected= @item[:title]
+        - @item.children.each do |child|
+          = link_to(child[:title], child.reps[0])
+
+      %hr
+
+      %div#main= yield
+
+      %hr
+
+      %div#footer
+        %p#mtime= "last modified: #{@item.mtime.strftime('%Y-%m-%d')}"

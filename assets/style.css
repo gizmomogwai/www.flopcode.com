@@ -1,0 +1,44 @@
+body {
+    background-color: lightgrey;
+}
+
+hr {
+    clear: both;
+}
+
+#nav a {
+    color: black;
+    background-color: lightgrey;
+}
+
+#nav a:hover {
+    color: white;
+    background-color: darkgrey;
+}
+
+#nav * {
+    padding: 1em;
+    float: left;
+    padding: 5px;
+    margin: 5px;
+}
+
+#nav div.selected {
+    background-color: grey;
+    color: white;
+}
+
+#footer {
+    clear: both;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main {
+    clear: both;
+}
+
+#footer #mtime {
+    text-align: right;
+}
