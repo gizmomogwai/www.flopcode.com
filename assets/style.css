@@ -35,10 +35,55 @@ hr {
     margin-right: auto;
 }
 
-#main {
-    clear: both;
+#all {
+    width: 750px;
+    margin: auto;
 }
+
+#main {
+  clear: both;
+}
+
 
 #footer #mtime {
     text-align: right;
+}
+
+div.intro img {
+    float: left;
+    height: 152px;
+}
+
+div.intro table td {
+    padding-right: 0.5em;
+}
+
+div.intro table {
+    float: clear;
+}
+
+table.cv {
+    border-collapse: collapse;
+}
+
+table.cv td {
+    vertical-align: top;
+    padding: 1em;
+}
+
+table.cv tr {
+    vertical-align: top;
+    padding: 1em;
+}
+
+table.cv td.date {
+    padding-right: 2em;
+}
+
+table.cv tr.separated {
+  border-bottom-style: dotted;
+  border-width: 1px;
+}
+
+tr.separated_last {
 }
