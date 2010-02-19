@@ -1,11 +1,23 @@
 #!/usr/bin/env ruby
 require 'haml'
+require 'sass'
+
+compile '/assets/styles/*' do
+  filter :sass
+  filter :relativize_paths, :type => :css
+end
 
 compile '*' do
   filter :haml
   layout 'default'
   filter :relativize_paths, :type => :html
 end
+
+
+route '/assets/styles/*' do
+  item.identifier.gsub(/\/$/, '') + '.css'
+end
+
 
 route '*' do
   item.identifier + 'index.html'

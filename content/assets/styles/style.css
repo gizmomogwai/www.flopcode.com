@@ -1,0 +1,57 @@
+!box_background = rgba(50, 50, 50, 0.5)
+!navi_focused = rgba(50, 50, 50, 0.5)
+!navi_selected = rgba(50, 50, 50, 0.8)
+!navi_unselected = rgba(50, 50, 50, 0.5)
+
+body
+  background-image: url(/images/background.jpg)
+
+#all
+  width: 750px
+  margin: auto
+
+=border
+  border: 1px solid
+
+#nav
+  background-color= !box_background
+  margin-bottom: 1em
+  padding: 1em
+  +border
+  a:hover
+    color: white
+  span:hover
+    background-color= !navi_focused
+  span
+    padding: 0.7em
+  span.selected
+    background-color= !navi_selected
+
+#main
+  background-color= !box_background
+  margin-bottom: 1em
+  +border
+
+#footer
+  background-color= !box_background
+  padding: 0.5em
+  +border
+
+.chapter
+  background-color= !box_background
+  margin: 0.5em
+
+
+table.cv
+  border-collapse: collapse
+  padding: 1em
+  td
+    vertical-align: top
+  tr
+    vertical-align: top
+  td.date
+    padding-right: 2em
+  tr.separated
+    padding: 1em
+    border-bottom-style: dotted
+    border-width: 1px
