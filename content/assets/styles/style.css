@@ -1,3 +1,8 @@
+*
+  padding: 0px
+  margin: 0px
+  border: 0px
+
 !box_background = rgba(50, 50, 50, 0.5)
 !navi_focused = rgba(50, 50, 50, 0.5)
 !navi_selected = rgba(50, 50, 50, 0.8)
@@ -8,39 +13,46 @@ body
 
 #all
   width: 750px
-  margin: auto
+  min-height: 300px
+  margin-left: auto
+  margin-right: auto
 
 =border
   border: 1px solid
+  border-radius: 10px
 
 #nav
   background-color= !box_background
-  margin-bottom: 1em
-  padding: 1em
+  padding-top: 1em
+  padding-bottom: 1em
   +border
   a:hover
     color: white
-  span:hover
-    background-color= !navi_focused
   span
-    padding: 0.7em
+    padding: 1em
   span.selected
     background-color= !navi_selected
+  span:hover
+    background-color= !navi_focused
+  width: 100%
+  margin-bottom: 10px
 
 #main
   background-color= !box_background
-  margin-bottom: 1em
   +border
+  min-height: 400px
+  width: 100%
+  margin-bottom: 10px
 
 #footer
   background-color= !box_background
-  padding: 0.5em
   +border
+  width: 100%
+  text-align: center
 
 .chapter
   background-color= !box_background
   margin: 0.5em
-
 
 table.cv
   border-collapse: collapse
