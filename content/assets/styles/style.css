@@ -23,19 +23,18 @@ body
 
 #nav
   background-color= !box_background
-  padding-top: 1em
-  padding-bottom: 1em
   +border
   a:hover
     color: white
-  span
+  div
+    float: left
     padding: 1em
-  span.selected
+  div.selected
     background-color= !navi_selected
-  span:hover
+  div:hover
     background-color= !navi_focused
-  width: 100%
   margin-bottom: 10px
+  overflow: auto
 
 #main
   background-color= !box_background
