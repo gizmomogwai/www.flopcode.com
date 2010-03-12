@@ -6,11 +6,12 @@
   %body
     %div#all
       %div#nav<
-        - print_parents(@item, @items) do |i|
-          %div<>= "#{link_to(i[:title], i.identifier)} > "
-          
-        %div.selected= @item[:title]
-        - @item.children.each do |child|
-          %div<>= link_to(child[:title], child.reps[0])
+        - print_parents(@item, @items, 'first', 'last') do |i, context|
+          %div{:class=>"#{context}"}
+            %a{:href=>"#{i.identifier}"}<>= "#{i[:title]}"
+        %div.current= @item[:title]
+        - do_collection(@item.children, 'child', 'first', 'last') do |child, context|
+          %div{:class=>"#{context}"}
+            %a{:href=>"#{child.reps[0].path}"}<>= "#{child[:title]}"
       %div#main= yield
       %div#footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')}"

@@ -1,52 +1,71 @@
 *
-  padding: 0px
   margin: 0px
   border: 0px
 
-!box_background = rgba(50, 50, 50, 0.5)
-!navi_focused = rgba(50, 50, 50, 0.5)
-!navi_selected = rgba(50, 50, 50, 0.8)
-!navi_unselected = rgba(50, 50, 50, 0.5)
 
+!box_background = rgba(50, 50, 50, 0.5)
+!navi_unselected = rgba(50, 50, 50, 0.8)
+!transparent = rgba(255, 255, 255, 0.0)
+!border_radius = 10px
 body
   background-image: url(/images/background.jpg)
+  width: 100%
 
 #all
   width: 750px
   min-height: 300px
   margin-left: auto
   margin-right: auto
+  border: 10px solid rgba(0, 0, 0, 0)
 
 =border
-  border: 1px solid
-  border-radius: 10px
+  border: 1px solid rgba(255, 255, 255, 0.0)
+  border-top-left-radius= !border_radius
+  border-top-right-radius= !border_radius
+  -moz-border-radius-topleft= !border_radius
+  -moz-border-radius-topright= !border_radius
 
 #nav
-  background-color= !box_background
-  +border
+  width: 100%
+  overflow: auto
   a:hover
     color: white
   div
+    margin: 2px
+    margin-color= !transparent
+    background-color= !navi_unselected
     float: left
-    padding: 1em
-  div.selected
-    background-color= !navi_selected
-  div:hover
-    background-color= !navi_focused
-  margin-bottom: 10px
-  overflow: auto
+    padding: 0.5em
+  div.child, div.parent
+    border-radius: 0px
+    margin-left: 0px
+    margin-right: 0px
+  div.childfirst, div.parentfirst
+    border-top-left-radius= !border_radius
+    -moz-border-radius-topleft= !border_radius
+    margin-right: 0px
+  div.childlast, div.parentlast
+    border-top-right-radius= !border_radius
+    -moz-border-radius-topright= !border_radius
+    margin-left: 0px
+  div.childfirstlast, div.parentfirstlast
+    +border
+  div.current
+    +border
+    position: relative
+    top: 2px
+    background-color= !box_background
 
 #main
-  background-color= !box_background
-  +border
-  min-height: 400px
   width: 100%
-  margin-bottom: 10px
+  background-color= !box_background
+  min-height: 400px
 
 #footer
-  background-color= !box_background
-  +border
   width: 100%
+  border-bottom-left-radius: 10px
+  border-bottom-right-radius: 10px
+  background-color= !box_background
   text-align: center
 
 .chapter
