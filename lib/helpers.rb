@@ -7,9 +7,10 @@ def print_parents(item, items, first, last)
     end
     all << item
   end
-  do_collection(all.reverse, 'parent', first, last) {|i, j|yield(i,j)}
+  do_collection(all.reverse, 'parent', first, last) do |i, j|
+    yield(i,j)
+  end
 end
-
 
 def do_collection(collection, context, first, last)
   collection.each_with_index do |i, idx|

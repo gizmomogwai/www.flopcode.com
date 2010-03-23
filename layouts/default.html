@@ -2,7 +2,10 @@
   %head
     %title= "\"#{@item[:title]}\""
     %script{:type=>"text/javascript", :src=>"/jquery-1.4.1.min.js"}
+    %script{:type=>"text/javascript", :src=>"/jquery.easing-1.3.js"}
+    %script{:type=>"text/javascript", :src=>"/jquery.accordion.js"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/style.css"}
+    = "<script type=\"text/javascript\">$().ready(function(){$('#accordion').accordion({alwaysOpen: false,autoheight: false});});</script>"
   %body
     %div#all
       %div#nav<
@@ -13,5 +16,8 @@
         - do_collection(@item.children, 'child', 'first', 'last') do |child, context|
           %div{:class=>"#{context}"}
             %a{:href=>"#{child.reps[0].path}"}<>= "#{child[:title]}"
-      %div#main= yield
+      %div#main
+        %h2.page= @item[:page_title] || "&nbsp;"
+        %div.chapter= yield
+        &nbsp;
       %div#footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')}"

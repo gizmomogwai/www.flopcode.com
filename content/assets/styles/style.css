@@ -2,13 +2,15 @@
   margin: 0px
   border: 0px
 
-
-!box_background = rgba(50, 50, 50, 0.5)
+!box_background = rgba(0, 50, 0, 0.5)
 !navi_unselected = rgba(50, 50, 50, 0.8)
 !transparent = rgba(255, 255, 255, 0.0)
 !border_radius = 10px
+!transparent_border = 1px "solid" rgba(255, 255, 255, 0.0)
+
 body
-  background-image: url(/images/background.jpg)
+  // background-image: url(/images/background3.jpg)
+  background-color: lightgreen
   width: 100%
 
 #all
@@ -18,12 +20,10 @@ body
   margin-right: auto
   border: 10px solid rgba(0, 0, 0, 0)
 
-=border
-  border: 1px solid rgba(255, 255, 255, 0.0)
-  border-top-left-radius= !border_radius
-  border-top-right-radius= !border_radius
-  -moz-border-radius-topleft= !border_radius
-  -moz-border-radius-topright= !border_radius
+h2.page
+  text-align: center
+p.page
+  text-align: justify
 
 #nav
   width: 100%
@@ -31,34 +31,22 @@ body
   a:hover
     color: white
   div
-    margin: 2px
-    margin-color= !transparent
     background-color= !navi_unselected
+    border: 1px solid rgba(255, 255, 255, 0.0)
     float: left
-    padding: 0.5em
-  div.child, div.parent
-    border-radius: 0px
-    margin-left: 0px
-    margin-right: 0px
-  div.childfirst, div.parentfirst
-    border-top-left-radius= !border_radius
-    -moz-border-radius-topleft= !border_radius
-    margin-right: 0px
-  div.childlast, div.parentlast
-    border-top-right-radius= !border_radius
-    -moz-border-radius-topright= !border_radius
-    margin-left: 0px
-  div.childfirstlast, div.parentfirstlast
-    +border
+    padding: 8px
+  div.childfirst
+    margin-left: 2px
+  div.parentlast, div.parentfirstlast
+    margin-right: 2px
   div.current
-    +border
-    position: relative
-    top: 2px
     background-color= !box_background
+    padding-bottom: 10px
 
 #main
   width: 100%
   background-color= !box_background
+  border-top-right-radius: 10px
   min-height: 400px
 
 #footer
@@ -70,7 +58,10 @@ body
 
 .chapter
   background-color= !box_background
-  margin: 0.5em
+  border-radius: 10px
+  border= !transparent_border
+  margin: 10px
+  padding: 10px
 
 table.cv
   border-collapse: collapse
@@ -85,3 +76,13 @@ table.cv
     padding: 1em
     border-bottom-style: dotted
     border-width: 1px
+
+.basic
+  width: 100%
+
+.basic>a
+  cursor: pointer
+  text-align: center
+  display: block
+  padding: 5px
+  margin-top: 0
