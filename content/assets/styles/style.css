@@ -42,6 +42,10 @@ p.page
   div.current
     background-color= !box_background
     padding-bottom: 10px
+  div.last
+    border-top-right-radius: 10px
+  div.first
+    border-top-left-radius: 10px
 
 #main
   width: 100%

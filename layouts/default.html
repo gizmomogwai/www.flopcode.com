@@ -9,13 +9,14 @@
   %body
     %div#all
       %div#nav<
-        - print_parents(@item, @items, 'first', 'last') do |i, context|
-          %div{:class=>"#{context}"}
+        - parents = get_parents(@item, @items)
+        - do_collection(parents, 'parent', 'first', 'last') do |i, context, first, last|
+          %div{:class=>"#{context}#{first==true ? ' first' : ''}"}
             %a{:href=>"#{i.identifier}"}<>= "#{i[:title]}"
-        %div.current= @item[:title]
-        - do_collection(@item.children, 'child', 'first', 'last') do |child, context|
-          %div{:class=>"#{context}"}
-            %a{:href=>"#{child.reps[0].path}"}<>= "#{child[:title]}"
+        %div{:class=>"current#{parents.size == 0 ? ' first' : ''}#{@item.children.size==0 ? ' last' : ''}"}= @item[:title]
+        - do_collection(@item.children, 'child', 'first', 'last') do |i, context, first, last|
+          %div{:class=>"#{context}#{last==true ? ' last' : ''}"}
+            %a{:href=>"#{i.reps[0].path}"}<>= "#{i[:title]}"
       %div#main
         %h2.page= @item[:page_title] || "&nbsp;"
         %div.chapter= yield
