@@ -1,1 +1,18 @@
-Hi, I'm a new item!
+%div.basic#accordion
+  %a.header Story
+  %div.chapter
+    %p
+      When switching from intellij to eclipse i missed a plugin which showed your source from a birds eye view. E.g. each letter represented as a pixel. I really liked this plugin, because you can estimate the complexitiy of a piece of code by looking at its &quot;graphical&quot; representation. Sure .. something like lines of code or how big one method is is also a good indicator, but i like this graphical approach.
+  %a.header Implementation
+  %div.chapter
+    %p
+      Its been a while since i made the last change on this plugin. But i still remember, that was kind of difficult to get to the textural representation of the editors (i think this is a good thing, because eclipse also alows you to make graphical editors and so on).
+    %p
+      Another thing was, I did not find a way to get all text-annotations of the system, so the preferences stored simply a set of annotations with optional colors. Each annotation has a name which is shown, so the plugin can work together with annotation that are not known at the time of the build of the plugin.
+  %a.header Sources
+  %div.chapter
+    The sources are located in my private svn repository, which i access with git.
+  %a.header Screens
+  %div.chapter
+    %img{:src=>"birdseyeview1.png", :width=>'200px'}
+    %img{:src=>"birdseyeview2.png", :width=>'200px'}

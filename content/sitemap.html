@@ -1,6 +1,14 @@
-- root = @items.find {|i|i.identifier == '/'}
-super
-= traverse_items([root], :ul, :li) do |i|
-  %a{:href=>"#{i.reps[0].path}"} #{i[:title]}
-
-super
+%div.basic#accordion
+  %a.header Tree
+  %div.chapter
+    - root = @items.find {|i|i.identifier == '/'}
+    = traverse_items([root], :ul, :li) do |i|
+      %a{:href=>"#{i.reps[0].path}"} #{i[:title]}
+      %span (last modified: #{i.mtime.strftime('%Y-%m-%d')})
+  %a.header Sorted on modification time
+  %div.chapter
+    %ul
+      - @items.sort{ |i, j | j.mtime - i.mtime }.each do |i|
+        %li
+          %a{:href=>"#{i.reps[0].path}"} #{i[:title]}
+          %span (last modified: #{i.mtime.strftime('%Y-%m-%d')}, path: #{i.identifier})

@@ -4,7 +4,7 @@
 
 !background = rgb(50, 50, 50)
 !box_background = rgba(80, 80, 80, 0.5)
-!navi_unselected = rgba(50, 50, 50, 0.8)
+!navi_unselected = rgba(60, 60, 60, 0.8)
 !transparent = rgba(255, 255, 255, 0.0)
 !border_radius = 10px
 !transparent_border = 1px "solid" rgba(255, 255, 255, 0.0)
@@ -15,7 +15,7 @@
 !text_color = rgb(226, 228, 203)
 !heading_color = rgb(180, 203, 138)
 
-p, li
+p, li, td, th, div
   color= !text_color
 
 a
@@ -27,6 +27,9 @@ a:hover
 a:visited
   color= !visited_link_color
 
+a.header
+  color= !heading_color
+
 h1, h2
   color= !heading_color
 body
@@ -34,6 +37,10 @@ body
   background-color= !background
   width: 100%
 
+.center
+  margin-left: auto
+  margin-right: auto
+  text-align: center
 #all
   width: 750px
   min-height: 300px

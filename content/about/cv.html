@@ -1,10 +1,11 @@
 %div.basic#accordion
-  %a Christian K&ouml;stlin
+  %a.header Christian K&ouml;stlin
   %div.chapter
     %table
       %tr
         %td{:rowspan => "6"}
-          %img{:src => "/images/chris3.jpg" }
+          // %img{:src => "/images/chris3.jpg" }
+          %img{:width => "200px", :height => "200px" }
         %td Date and place of birth:
         %td 2010-07-25, Freising, Germany
       %tr
@@ -18,7 +19,7 @@
         %td Web:
         %td
           %a{:href=>'http://gizmomogwai.dyndns.org/~gizmo'} http://gizmomogwai.dyndns.org/~gizmo
-  %a Specialities
+  %a.header Specialities
   %div.chapter
     %ul
       %li java
@@ -26,7 +27,7 @@
       %li plugins
       %li android
       %li ruby
-  %a Experience
+  %a.header Experience
   %div.chapter
     %table.cv
       %tr.separated
@@ -70,16 +71,37 @@
             %ul
               %li interest calculator applet as component for a lotus notes based cms (java)
               %li gerty (web based domain administration for denic, c++)
-  %a Education
+  %a.header Education
   %div.chapter
     %table.cv
       %tr.separated
-        %td.date 1994<br /><div class="" />-2001
+        %td.date 1998<br />&nbsp;&nbsp;&nbsp;-2001
         %td
-          %a{:href => "http://www.uni-karlsruhe.de"} Universit&auml;t Karlsruhe (TH)
-          %p Abschlu&szlig;: Diplominformatiker
+          %p
+            %a{:href => "http://www.uni-karlsruhe.de"} Universit&auml;t Karlsruhe (TH)
+          %p
+            %a.block{:href => "/cv/Diplom.pdf"} Abschlu&szlig;: Diplominformatiker (1.7)
+      %tr.separated
+        %td.date 1994<br />&nbsp;&nbsp;&nbsp;-1998
+        %td
+          %p
+            %a{:href => "http://www.uni-karlsruhe.de"} Universit&auml;t Karlsruhe (TH)
+          %p
+            %a{:href => "/cv/Vordiplom.pdf"} Abschlu&szlig;: Vordiplom (befriedigend)
+      %tr.separated
+        %td.date 1987<br />&nbsp;&nbsp;&nbsp;-1993
+        %td
+          %p
+            %a{:href => "http://www.hzg.sig.bw.schule.de"} Hohenzollern Gymnasium, Sigmaringen
+          %p
+            %a{:href => "/cv/Abitur.pdf"} Abschlu&szlig;: Abitur (1.7)
+      %tr.separated
+        %td.date 1984<br />&nbsp;&nbsp;&nbsp;-1987
+        %td St. Wolfhelm Gymnasium, Schwalmtal
+      %tr.separated
+        %td.date 1984
+        %td Deutsche Schule Budel
       %tr.separated_last
-        %td.date 1987-1993
+        %td.date 1980<br />&nbsp;&nbsp;&nbsp;-1984
         %td
-          %a{:href => "http://www.hzg.sig.bw.schule.de"} Hohenzollern Gymnasium, Sigmaringen
-          %p Abschlu&szlig;: Abitur
+          Grundschule F&uuml;rstenfeldbruck West

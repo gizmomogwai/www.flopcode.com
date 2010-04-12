@@ -1,0 +1,36 @@
+%div.basic#accordion
+  %a.header Story
+  %div.chapter
+    %p
+      My most succesful private software project ever (the regex plugin for intellij with something like 30000 downloads) was abandoned since i did not use intellij any longer. Now starts the old intellij vs. eclipse battle. But points of the story is: I am quite fascinated by regular expressions for simple parse tasks (if you want to parse something complex i would use another technologie), but for simple pattern matching tasks (where the regular expressions are also quite simple) its perfect. No ugly indexOf, substring and off by one problems :)
+    %p
+      With this mindset it could be useful if you had always a small regular expression evaluator with you to experiment and analyse your patterns.
+    %p
+      There are some regular expression applications on the market, but none of them satisfied me.
+    %p
+      So the regexer was born.
+  %a.header Implementation
+  %div.chapter
+    %p
+      First take a look at the screenshots ...
+    %p
+      For me the funny thing about the regexer is, that its implemented in a hybrid way:
+      %ul
+        %li
+          One half of the application is implemented in java (it simple takes the input, compiles a <a href="pattern.java.com">pattern</a> and tries to matches it againts another input). Then it outputs a little bit of html and puts it into a webview.
+        %li
+          The other half lifes in the html and is implemented in javascript by using the excellent <a href="http://www.jquery.com">jquery</a> library.
+      I find this style of development really stimulating, because you have to know more than one technology, can use the best tool for the job and switch between different development paradigms:
+      %ul
+        %li Layouting of a simple userinterface with the android-xml-layouts.
+        %li Some kind of template approach to create the desired html out of the result of the pattern match.
+        %li Styling with css and html to get a good looking result.
+        %li Coding with javascript to get the needed dynamic into the html.
+  %a.header Sources
+  %div.chapter
+    The sources are located in my private svn repository, which i access with git.
+  %a.header Screens
+  %div.chapter
+    %img{:src=>"regexer1.png", :width=>'200px'}
+    %img{:src=>"regexer2.png", :width=>'200px'}
+    %img{:src=>"regexer3.png", :width=>'200px'}
