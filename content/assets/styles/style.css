@@ -2,15 +2,36 @@
   margin: 0px
   border: 0px
 
-!box_background = rgba(0, 50, 0, 0.5)
+!background = rgb(50, 50, 50)
+!box_background = rgba(80, 80, 80, 0.5)
 !navi_unselected = rgba(50, 50, 50, 0.8)
 !transparent = rgba(255, 255, 255, 0.0)
 !border_radius = 10px
 !transparent_border = 1px "solid" rgba(255, 255, 255, 0.0)
 
+!link_color = rgb(223, 162, 162)
+!hovered_link_color = rgb(255, 255, 255)
+!visited_link_color = rgb(226, 228, 206)
+!text_color = rgb(226, 228, 203)
+!heading_color = rgb(180, 203, 138)
+
+p, li
+  color= !text_color
+
+a
+  color= !link_color
+
+a:hover
+  color= !hovered_link_color
+
+a:visited
+  color= !visited_link_color
+
+h1, h2
+  color= !heading_color
 body
   // background-image: url(/images/background3.jpg)
-  background-color: lightgreen
+  background-color= !background
   width: 100%
 
 #all
@@ -29,13 +50,13 @@ p.page
   width: 100%
   overflow: auto
   a:hover
-    color: white
+    color= !hovered_link_color
   div
     background-color= !navi_unselected
     border: 1px solid rgba(255, 255, 255, 0.0)
     float: left
     padding: 8px
-  div.childfirst
+  div.childfirst, div.childfirstlast
     margin-left: 2px
   div.parentlast, div.parentfirstlast
     margin-right: 2px
@@ -70,6 +91,7 @@ p.page
 table.cv
   border-collapse: collapse
   padding: 1em
+  width: 100%
   td
     vertical-align: top
   tr
@@ -90,3 +112,6 @@ table.cv
   display: block
   padding: 5px
   margin-top: 0
+
+a.block
+  display: block
