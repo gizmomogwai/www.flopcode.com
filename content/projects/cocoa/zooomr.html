@@ -1,0 +1,58 @@
+%div.basic#accordion
+  %a.header Story
+  %div.chapter
+    %p
+      Since Picasa for windows came out i missed it very much on OS-X. I even bought&nbsp;
+      %a{:href=>"http://www.codeweavers.com/products/cxmac/"}<>
+        crossover
+      &nbsp;.
+    %p
+      Some times ago I tested all picture site (aka. flickr, ...) and somehow I ended up with an unlimited account at&nbsp;
+      %a{:href=>"http://www.zooomr.com"}<>
+        zooomr
+      &nbsp;. I did not use it intensively, because there was no support for zooomr in picasa. You could use the fantastic&nbsp;
+      %a{:href=>"http://juploadr.org/"}<>
+        JUploadr
+      , but that was not a real picasa integration.
+    %p
+      This christmas holiday I thought, is there not a convenient ruby api for zooomr? Is there not MacRuby which allows to write cocoa applications in ruby (and not in objective-c). Is there not some kind of plugin-api into picasa.
+    %p
+      Let's try this.
+  %a.header Implementation
+  %div.chapter
+    %p
+      As described the components are:
+      %ul
+        %li
+          zooomr api for ruby&nbsp;
+          %a{:href => "http://code.google.com/p/ruby-zooomr-api/"}<>
+            ruby-zooomr-api
+          &nbsp;.
+        %li
+          macruby&nbsp;
+          %a{:href => "http://www.macruby.org/"}<>
+            macruby
+          &nbsp;.
+        %li
+          picasa button api&nbsp;
+          %a{:href => "http://code.google.com/apis/picasa/docs/button_api.html"}<>
+            picasa button api
+          &nbsp;.
+  %a.header Installation
+  %div.chapter
+    %p
+      Put the&nbsp;
+      %a{:href => "http://dl.dropbox.com/u/1365239/zooomr-ruby-uploader.app.tar.gz"}<>
+        app
+      &nbsp;into the applications folder. (open -b com.flopcode.zooomr-ruby-uploader) should start the program).
+    %p
+      Install the picasa button with&nbsp;
+      %a{:href=>"picasa://importbutton/?url=http://gizmomogwai.dyndns.org/~gizmo/projects/cocoa/zooomr/zooomr.pbz"}<>
+        this
+      &nbsp;link.
+  %a.header Sources
+  %div.chapter
+    The sources are located in my private git repository at assembla.
+  / %a.header Screens
+  / %div.chapter
+  /  hier kommen noch ein paar screenshots
