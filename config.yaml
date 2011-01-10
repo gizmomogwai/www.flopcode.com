@@ -1,6 +1,6 @@
---- 
+text_extensions: [ 'css', 'erb', 'haml', 'htm', 'html', 'sass', 'scss', 'txt', 'xhtml', 'xml' ]
 output_dir: output
 data_sources: 
-- type: filesystem_compact
+- type: filesystem_unified
   items_root: /
   layouts_root: /

@@ -4,39 +4,39 @@
   font-family: sans-serif
   font-size: 1em
 
-!background = rgb(50, 50, 50)
-!box_background = rgba(80, 80, 80, 0.5)
-!navi_unselected = rgba(60, 60, 60, 0.8)
-!transparent = rgba(255, 255, 255, 0.0)
-!border_radius = 10px
-!transparent_border = 1px "solid" rgba(255, 255, 255, 0.0)
+$background: rgb(50, 50, 50)
+$box_background: rgba(80, 80, 80, 0.5)
+$navi_unselected: rgba(60, 60, 60, 0.8)
+$transparent: rgba(255, 255, 255, 0.0)
+$border_radius: 10px
+$transparent_border: 1px "solid" rgba(255, 255, 255, 0.0)
 
-!link_color = rgb(223, 162, 162)
-!hovered_link_color = rgb(255, 255, 255)
-!visited_link_color = rgb(226, 228, 206)
-!text_color = rgb(226, 228, 203)
-!heading_color = rgb(180, 203, 138)
+$link_color: rgb(223, 162, 162)
+$hovered_link_color: rgb(255, 255, 255)
+$visited_link_color: rgb(226, 228, 206)
+$text_color: rgb(226, 228, 203)
+$heading_color: rgb(180, 203, 138)
 
 p, li, td, th, div
-  color= !text_color
+  color: $text_color
 
 a
-  color= !link_color
+  color: $link_color
 
 a:hover
-  color= !hovered_link_color
+  color: $hovered_link_color
 
 a:visited
-  color= !visited_link_color
+  color: $visited_link_color
 
 a.header
-  color= !heading_color
+  color: $heading_color
 
 h1, h2
-  color= !heading_color
+  color: $heading_color
 body
   // background-image: url(/images/background3.jpg)
-  background-color= !background
+  background-color: $background
   width: 100%
 
 .center
@@ -62,9 +62,9 @@ p.page
   width: 100%
   overflow: auto
   a:hover
-    color= !hovered_link_color
+    color: $hovered_link_color
   div
-    background-color= !navi_unselected
+    background-color: $navi_unselected
     border: 1px solid rgba(255, 255, 255, 0.0)
     float: left
     padding: 8px
@@ -73,7 +73,7 @@ p.page
   div.parentlast, div.parentfirstlast
     margin-right: 2px
   div.current
-    background-color= !box_background
+    background-color: $box_background
     padding-bottom: 10px
   div.last
     border-top-right-radius: 10px
@@ -81,7 +81,7 @@ p.page
     border-top-left-radius: 10px
 #main
   width: 100%
-  background-color= !box_background
+  background-color: $box_background
   border-top-right-radius: 10px
   min-height: 400px
 
@@ -89,13 +89,13 @@ p.page
   width: 100%
   border-bottom-left-radius: 10px
   border-bottom-right-radius: 10px
-  background-color= !box_background
+  background-color: $box_background
   text-align: center
 
 .chapter
-  background-color= !box_background
+  background-color: $box_background
   border-radius: 10px
-  border= !transparent_border
+  border: $transparent_border
   margin: 10px
   padding: 10px
 

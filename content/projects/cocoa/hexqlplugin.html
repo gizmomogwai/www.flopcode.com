@@ -1,0 +1,28 @@
+%div.basic#accordion
+  %a.header Story
+  %div.chapter
+    %p
+      Quicklook was for me one of the best improvements in Leopard. Even better that it is expandable with plugins and that XCode comes already with a handy project template. See&nbsp;
+      %a{:href=>"http://www.quicklookplugins.com/"}
+        www.quicklookplugins.com
+      &nbsp;for a list of available plugins.
+      One thing thats really missing is that you dont get a hexviewer for files OS-X does not know.
+  %a.header Implementation
+  %div.chapter
+    %p
+      The basic idea was to catch all file types as described in&nbsp;
+      %a{:href=>"http://developer.apple.com/library/mac/#documentation/FileManagement/Conceptual/understanding_utis/understand_utis_conc/understand_utis_conc.html#//apple_ref/doc/uid/TP40001319-CH202-CHDHIJDE"}
+        the apple documentation
+      &nbsp;by catching public.data.
+    %p
+      After that the plugin simple reads in the first bytes of the file and renders them in a webview with some jquery to provide for tabs, highlighting, ...
+  %a.header Installation
+  %div.chapter
+    %p
+      Just copy the .qlgenerator directory into HOME/Library/Quicklook.
+  %a.header Sources
+  %div.chapter
+    The sources are located in my private git repository at assembla.
+  / %a.header Screens
+  / %div.chapter
+  /  hier kommen noch ein paar screenshots
