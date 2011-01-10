@@ -50,6 +50,18 @@
       %a{:href=>"picasa://importbutton/?url=http://gizmomogwai.dyndns.org/~gizmo/projects/cocoa/zooomr/zooomr.pbz"}<>
         this
       &nbsp;link.
+  %a.head The Good, the Bad and the Ugly
+  %div.chapter
+    %p
+      MacRuby and interface builder work amazing together. Somehow its fun to see how things work, that are not supposed to work together. The MacRuby (and of course also the RubyCocoac) Guys are doing a really great job.
+    %p
+      I had only the problem, that the json parser (json_pure) did not work for me, which I think is to blame on the faulty regex implementation of MacRuby.
+    %p
+      Another thing was to provide a progressbar for the file uploads, because the default net/http post does not support something in that department. The solution I came up with uses ugly monkey patching and global variables to get to the progress (and I had to patch two ruby core classes :().
+    %p
+      In terms of working with ruby-gems inside of macruby and bundling of the application I still have to do a lot of research on how things work. Lets see if I will get to this.
+    %p
+      One thing I still have to figure out is how to get progressindicators into a nstableview.
   %a.header Sources
   %div.chapter
     The sources are located in my private git repository at assembla.
