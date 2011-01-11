@@ -10,11 +10,12 @@
     %div#all
       %div#nav<
         - parents = get_parents(@item, @items)
+        - content_children = @item.children.reject{|i|i.binary?}
         - do_collection(parents, 'parent', 'first', 'last') do |i, context, first, last|
           %div{:class=>"#{context}#{first==true ? ' first' : ''}"}
             %a{:href=>"#{i.identifier}"}<>= "#{i[:title]}"
-        %div{:class=>"current#{parents.size == 0 ? ' first' : ''}#{@item.children.size==0 ? ' last' : ''}"}= @item[:title]
-        - do_collection(@item.children, 'child', 'first', 'last') do |i, context, first, last|
+        %div{:class=>"current#{parents.size == 0 ? ' first' : ''}#{content_children.size==0 ? ' last' : ''}"}= @item[:title]
+        - do_collection(content_children, 'child', 'first', 'last') do |i, context, first, last|
           %div{:class=>"#{context}#{last==true ? ' last' : ''}"}
             %a{:href=>"#{i.reps[0].path}"}<>= "#{i[:title]}"
       %div#main

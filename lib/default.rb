@@ -10,9 +10,10 @@ def traverse_items(items, tree_element, item_element, &code)
     items.each do |item|
       haml_tag item_element do
         code.call(item)
-        if item.children.size > 0
+        childs = item.children.reject{|i|i.binary?}
+        if childs.size > 0
           haml_tag tree_element do
-            haml_concat traverse_items(item.children, tree_element, item_element, &code)
+            haml_concat traverse_items(childs, tree_element, item_element, &code)
           end
         end
       end

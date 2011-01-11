@@ -21,6 +21,7 @@ def screenshots(items)
   end
   return "<a class=\"header\">Screens</a><div class=\"chapter\">#{res}</div>"
 end
+
 def do_collection(collection, context, first, last)
   collection.each_with_index do |i, idx|
     help = context.dup
