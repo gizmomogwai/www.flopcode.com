@@ -8,23 +8,23 @@ compile '/assets/styles/*' do
 end
 
 compile '*' do
-  puts item.identifier
-  filter :haml unless item.binary?
-  layout 'default' unless item.binary?
-  filter :relativize_paths, :type => :html unless item.binary?
+  if not item.binary?
+    filter :haml
+    layout 'default'
+    filter :relativize_paths, :type => :html
+  end
 end
 
 route '/assets/styles/*' do
   item.identifier.gsub(/\/$/, '') + '.css'
 end
 
-route '*screenshot*' do
-  item.identifier.chop + '.' + item[:extension]
-end
-
 route '*' do
-  item.identifier + 'index.html'
+  if item.binary?
+    item.identifier.chop + '.' + item[:extension]
+  else
+    item.identifier + 'index.html'
+  end
 end
-
 
 layout '*', :haml
