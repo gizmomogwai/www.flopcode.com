@@ -9,7 +9,18 @@ def get_parents(item, items)
   end
   return all.reverse
 end
-
+def screenshots(items)
+  res = ""
+  items.children.each do |i|
+    if i[:extension] == 'png'
+      res += "<img src=\"#{i.identifier.chop}.png\" width=\"200px\" />"
+    end
+  end
+  if res.length == 0
+    return res
+  end
+  return "<a class=\"header\">Screens</a><div class=\"chapter\">#{res}</div>"
+end
 def do_collection(collection, context, first, last)
   collection.each_with_index do |i, idx|
     help = context.dup

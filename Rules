@@ -2,29 +2,46 @@
 require 'haml'
 require 'sass'
 
-compile '/assets/styles/*' do
-  filter :sass
-  filter :relativize_paths, :type => :css
-end
-
 compile '*' do
-  if not item.binary?
+  puts "compile #{item.identifier} #{item[:extension]}"
+  if item[:extension] == "sass"
+    filter :sass
+  elsif item[:extension] == "haml"
     filter :haml
     layout 'default'
     filter :relativize_paths, :type => :html
   end
 end
 
-route '/assets/styles/*' do
-  item.identifier.gsub(/\/$/, '') + '.css'
-end
+#compile '/assets/styles/*' do
+#  filter :sass
+#  filter :relativize_paths, :type => :css
+#end
+
+#compile '*' do
+#  if not item.binary?
+#    filter :haml
+#    layout 'default'
+#    filter :relativize_paths, :type => :html
+#  end
+#end
+
+#route '/assets/styles/*' do
+#  item.identifier.gsub(/\/$/, '') + '.css'
+#end
 
 route '*' do
-  if item.binary?
-    item.identifier.chop + '.' + item[:extension]
+  if item[:extension] == 'sass'
+    r = item.identifier.chop + '.' + 'css'
+  elsif item[:extension] == 'haml'
+    r = item.identifier + 'index.html'
+  elsif item.binary?
+    r = item.identifier.chop + '.' + item[:extension]
   else
-    item.identifier + 'index.html'
+    r = item.identifier + 'index.html'
   end
+  puts "route #{item.identifier} #{item[:extension]} => #{r}"
+  r
 end
 
-layout '*', :haml
+layout '*', :haml, :format => :html5
