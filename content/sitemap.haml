@@ -1,15 +1,26 @@
+- items = @items.reject{|i|i.binary?}
 %div.basic#accordion
   %a.header Tree
   %div.chapter
-    - items = @items.reject{|i|i.binary?}
     - root = items.find {|i|i.identifier == '/'}
     = traverse_items([root], :ul, :li) do |i|
-      %a{:href=>"#{i.reps[0].path}"} #{i[:title]}
+      = link(i)
       %span (last modified: #{i.mtime.strftime('%Y-%m-%d')})
   %a.header Sorted on modification time
   %div.chapter
     %ul
       - items.sort{ |i, j | j.mtime - i.mtime }.each do |i|
         %li
-          %a{:href=>"#{i.reps[0].path}"} #{i[:title]}
+          = link(i)
           %span (last modified: #{i.mtime.strftime('%Y-%m-%d')}, path: #{i.identifier})
+  %a.header Index
+  %div.chapter
+    - groups = items.group_by{|i|i[:title].to_s.downcase[0,1]}
+    %ul
+      - groups.each do |k,v|
+        %li
+          = k
+          %ul
+            - v.each do |i|
+              %li
+                = link(i)

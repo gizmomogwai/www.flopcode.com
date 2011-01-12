@@ -20,3 +20,8 @@ def traverse_items(items, tree_element, item_element, &code)
     end
   end
 end
+
+def link(item)
+  # %a{:href=> "#{i.reps[0].path}"} #{i[:title]}
+  return "<a href=\"#{item.reps[0].path}\">#{item[:title]}</a>"
+end
