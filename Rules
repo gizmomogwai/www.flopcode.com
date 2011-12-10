@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-require 'haml'
-require 'sass'
+#require 'haml'
+#require 'sass'
 
 compile '*' do
   puts "compile #{item.identifier} #{item[:extension]}"
