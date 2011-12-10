@@ -8,7 +8,7 @@ require 'nanoc3/tasks'
 desc 'deploy local webserver'
 task :deploy_local => :compile do
   system 'rsync -gprt --partial output/ ~/Sites'
-#  system 'open http://localhost/~gizmo'
+  system 'open http://localhost/~gizmo'
 end
 
 desc 'deploy to production webserver'
