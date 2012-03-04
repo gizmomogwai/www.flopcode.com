@@ -12,7 +12,7 @@ task :deploy do
 end
 
 desc 'run nanoc3'
-task :compile do
+task :compile => [:clean] do
   sh 'nanoc3 co'
 end
 
