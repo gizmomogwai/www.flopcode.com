@@ -3,19 +3,22 @@ VERSION:3.0
 PRODID:-//Apple Inc.//Address Book 6.1//EN
 N:Köstlin;Christian;;;
 FN:Christian Köstlin
-EMAIL;type=INTERNET;type=WORK;type=pref:christian.koestlin@esrlabs.com
+EMAIL;type=INTERNET;type=HOME;type=pref:christian.koestlin@gmail.com
+EMAIL;type=INTERNET;type=WORK:christian.koestlin@esrlabs.com
 TEL;type=HOME;type=VOICE;type=pref:+498937950455
 TEL;type=CELL;type=VOICE:+4915773889130
 TEL;type=CELL;type=VOICE:+491631631136
 item1.ADR;type=HOME;type=pref:;;Bruderstr. 5;München;;80538;Germany
 NOTE:Comdirect  \n  Knr 3023124  \n  Blz 20041155  \n  Tagesgeldkonto    Knr 302312440\nGeburtsstunde: 10:50\nIngDiBa\n  GiroKnr 5406605701\n  ExtraKnr 5533533844\n  Blz 50010517
-URL;type=WORK;type=pref:http://www.esrlabs.com
+item2.URL;type=pref:http://gizmomogwai.github.com
+item2.X-ABLabel:_$!<HomePage>!$_
+URL;type=WORK:http://www.esrlabs.com
 BDAY;value=date:1974-07-25
 X-AIM;type=HOME;type=pref:gizmomogwai1974
 X-ICQ;type=HOME;type=pref:126772352
 IMPP;X-SERVICE-TYPE=AIM;type=HOME:aim:gizmomogwai1974
-item2.IMPP;X-SERVICE-TYPE=GoogleTalk;type=pref:xmpp:christian.koestlin@gmail.com
-item2.X-ABLabel:_$!<Other>!$_
+item3.IMPP;X-SERVICE-TYPE=GoogleTalk;type=pref:xmpp:christian.koestlin@gmail.com
+item3.X-ABLabel:_$!<Other>!$_
 IMPP;X-SERVICE-TYPE=ICQ;type=HOME:aim:126772352
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQF
  BQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2w
