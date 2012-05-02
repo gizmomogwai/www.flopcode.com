@@ -13,7 +13,7 @@ end
 
 desc 'run nanoc3'
 task :compile => [:clean] do
-  sh 'nanoc3 co'
+  sh 'nanoc co'
 end
 
 desc 'cleanup'
