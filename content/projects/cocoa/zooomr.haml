@@ -1,68 +1,67 @@
-%div.basic#accordion
-  %a.header Story
-  %div.chapter
-    %p
-      Since Picasa for windows came out i missed it very much on OS-X. I even bought&nbsp;
-      %a{:href=>"http://www.codeweavers.com/products/cxmac/"}<>
-        crossover
-      &nbsp;.
-    %p
-      Some times ago I tested all picture site (aka. flickr, ...) and somehow I ended up with an unlimited account at&nbsp;
-      %a{:href=>"http://www.zooomr.com"}<>
-        zooomr
-      &nbsp;. I did not use it intensively, because there was no support for zooomr in picasa. You could use the fantastic&nbsp;
-      %a{:href=>"http://juploadr.org/"}<>
-        JUploadr
-      , but that was not a real picasa integration.
-    %p
-      This christmas holiday I thought, is there not a convenient ruby api for zooomr? Is there not MacRuby which allows to write cocoa applications in ruby (and not in objective-c). Is there not some kind of plugin-api into picasa.
-    %p
-      Let's try this.
-  %a.header Implementation
-  %div.chapter
-    %p
-      As described the components are:
-      %ul
-        %li
-          zooomr api for ruby&nbsp;
-          %a{:href => "http://code.google.com/p/ruby-zooomr-api/"}<>
-            ruby-zooomr-api
-          &nbsp;.
-        %li
-          macruby&nbsp;
-          %a{:href => "http://www.macruby.org/"}<>
-            macruby
-          &nbsp;.
-        %li
-          picasa button api&nbsp;
-          %a{:href => "http://code.google.com/apis/picasa/docs/button_api.html"}<>
-            picasa button api
-          &nbsp;.
-  %a.header Installation
-  %div.chapter
-    %p
-      Put the&nbsp;
-      %a{:href => "http://dl.dropbox.com/u/1365239/zooomr-ruby-uploader.app.tar.gz"}<>
-        app
-      &nbsp;into the applications folder. (open -b com.flopcode.zooomr-ruby-uploader) should start the program).
-    %p
-      Install the picasa button with&nbsp;
-      %a{:href=>"picasa://importbutton/?url=http://gizmomogwai.dyndns.org/~gizmo/projects/cocoa/zooomr/zooomr.pbz"}<>
-        this
-      &nbsp;link.
-  %a.head The Good, the Bad and the Ugly
-  %div.chapter
-    %p
-      MacRuby and interface builder work amazing together. Somehow its fun to see how things work, that are not supposed to work together. The MacRuby (and of course also the RubyCocoac) Guys are doing a really great job.
-    %p
-      I had only the problem, that the json parser (json_pure) did not work for me, which I think is to blame on the faulty regex implementation of MacRuby.
-    %p
-      Another thing was to provide a progressbar for the file uploads, because the default net/http post does not support something in that department. The solution I came up with uses ugly monkey patching and global variables to get to the progress (and I had to patch two ruby core classes :().
-    %p
-      In terms of working with ruby-gems inside of macruby and bundling of the application I still have to do a lot of research on how things work. Lets see if I will get to this.
-    %p
-      One thing I still have to figure out is how to get progressindicators into a nstableview.
-  %a.header Sources
-  %div.chapter
-    The sources are located in my private git repository at assembla.
-  = screenshots(@item)
+%a.header Story
+%div.chapter
+  %p
+    Since Picasa for windows came out i missed it very much on OS-X. I even bought&nbsp;
+    %a{:href=>"http://www.codeweavers.com/products/cxmac/"}<>
+      crossover
+    &nbsp;.
+  %p
+    Some times ago I tested all picture site (aka. flickr, ...) and somehow I ended up with an unlimited account at&nbsp;
+    %a{:href=>"http://www.zooomr.com"}<>
+      zooomr
+    &nbsp;. I did not use it intensively, because there was no support for zooomr in picasa. You could use the fantastic&nbsp;
+    %a{:href=>"http://juploadr.org/"}<>
+      JUploadr
+    , but that was not a real picasa integration.
+  %p
+    This christmas holiday I thought, is there not a convenient ruby api for zooomr? Is there not MacRuby which allows to write cocoa applications in ruby (and not in objective-c). Is there not some kind of plugin-api into picasa.
+  %p
+    Let's try this.
+%a.header Implementation
+%div.chapter
+  %p
+    As described the components are:
+    %ul
+      %li
+        zooomr api for ruby&nbsp;
+        %a{:href => "http://code.google.com/p/ruby-zooomr-api/"}<>
+          ruby-zooomr-api
+        &nbsp;.
+      %li
+        macruby&nbsp;
+        %a{:href => "http://www.macruby.org/"}<>
+          macruby
+        &nbsp;.
+      %li
+        picasa button api&nbsp;
+        %a{:href => "http://code.google.com/apis/picasa/docs/button_api.html"}<>
+          picasa button api
+        &nbsp;.
+%a.header Installation
+%div.chapter
+  %p
+    Put the&nbsp;
+    %a{:href => "http://dl.dropbox.com/u/1365239/zooomr-ruby-uploader.app.tar.gz"}<>
+      app
+    &nbsp;into the applications folder. (open -b com.flopcode.zooomr-ruby-uploader) should start the program).
+  %p
+    Install the picasa button with&nbsp;
+    %a{:href=>"picasa://importbutton/?url=http://gizmomogwai.dyndns.org/~gizmo/projects/cocoa/zooomr/zooomr.pbz"}<>
+      this
+    &nbsp;link.
+%a.head The Good, the Bad and the Ugly
+%div.chapter
+  %p
+    MacRuby and interface builder work amazing together. Somehow its fun to see how things work, that are not supposed to work together. The MacRuby (and of course also the RubyCocoac) Guys are doing a really great job.
+  %p
+    I had only the problem, that the json parser (json_pure) did not work for me, which I think is to blame on the faulty regex implementation of MacRuby.
+  %p
+    Another thing was to provide a progressbar for the file uploads, because the default net/http post does not support something in that department. The solution I came up with uses ugly monkey patching and global variables to get to the progress (and I had to patch two ruby core classes :().
+  %p
+    In terms of working with ruby-gems inside of macruby and bundling of the application I still have to do a lot of research on how things work. Lets see if I will get to this.
+  %p
+    One thing I still have to figure out is how to get progressindicators into a nstableview.
+%a.header Sources
+%div.chapter
+  The sources are located in my private git repository at assembla.
+= screenshots(@item)

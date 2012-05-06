@@ -1,14 +1,10 @@
 %html
   %head
     %title= "\"#{@item[:title]}\""
-    / %script{:type=>"text/javascript", :src=>"/jquery-1.4.1.min.js"}
-    / %script{:type=>"text/javascript", :src=>"/jquery.easing-1.3.js"}
-    / %script{:type=>"text/javascript", :src=>"/jquery.accordion.js"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/style.css"}
-    / = "<script type=\"text/javascript\">$().ready(function(){$('#accordion').accordion({alwaysOpen: false,autoheight: false, header:'a.header'});});</script>"
   %body
-    %div#all
-      %div#nav<
+    %div#all><
+      %div#nav><
         - parents = get_parents(@item, @items)
         - content_children = @item.children.reject{|i|i.binary?}
         - do_collection(parents, 'parent', 'first', 'last') do |i, context, first, last|
@@ -18,8 +14,9 @@
         - do_collection(content_children, 'child', 'first', 'last') do |i, context, first, last|
           %div{:class=>"#{context}#{last==true ? ' last' : ''}"}
             %a{:href=>"#{i.reps[0].path}"}<>= "#{i[:title]}"
-      %div#main
-        %h2.page= @item[:page_title] || "&nbsp;"
-        %div.chapter= yield
+      %div#main><
+        %h2.page><= @item[:page_title] || @item[:title] || "&nbsp;"
+        %div.chapter><= yield
         &nbsp;
-      %div#footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')}"
+      %div#footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}"
+

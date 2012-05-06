@@ -1,44 +1,43 @@
-%div.basic#accordion
-  %a.header Story
-  %div.chapter
-    %p
-      When working with OS X bonjour is everywhere. My machine alone has:
-      %ul
-        %li Apple File Sharing (afp, smb or ftp)
-        %li Screen Sharing (vnc)
-        %li World Wide Web (http or https)
-        %li clipshlpr (funny clipboard sharing from a program i recently purchased)
-        %li Secure File Sharing (sftp)
-        %li Network File System (nfs)
-        %li Secure Shell (ssh)
-      enabled.
-      When I come into my homenetwork, my media, download server and so on are also discoverable via bonjour. It is a technology that makes one simple thing in a good way.
-    %p
-      Unfortunately google does not provide a bonjour service on the android platform.
-      The networkbrowser is my try on doing the discovery part of bonjour (i dont support announcing right now) with std. java libraries in an extensible and android way.
-    %p
-      First I thought, that something like 50 cent would be a reasonable price for such a basic and very useful application, but several months in the android market showed, that the android people normalyy dont like buy applications and so the network browser is now a free application (which is only fait, because most of the work was done by the jmdns guys).
-    %p
-      For android 3. something I would really love to see zeroconf support integrated into the android platform by google.
-  %a.header Implementation
-  %div.chapter
-    %p
-      The networkbrowser simply browses through discoverable services and then tries to call seperately installable intents. I also provide some wrapper intents for:
-      %ul
-        %li ssh - mapped to connectbot
-        %li ftp - mapped to fsync
-        %li rfb - (remote framebuffer or vnc) mapped to androidvnc (i hope my patch to androidvnc makes it into the next release)
-        %li http - mapped to the default browse intent
-  %a.header How to extend
-  %div.chapter
-    As an application developer you have to ways of communicating with the network browser:
+%a.header Story
+%div.chapter
+  %p
+    When working with OS X bonjour is everywhere. My machine alone has:
     %ul
-      %li
-        Provide an intent that is called from the network browser when the user selects an service.
-      %li
-        Use the networkbrowser with startActivityForResult to get to the data of a service you want to connect to.
-    Examples are coming.
-  %a.header Sources
-  %div.chapter
-    The sources are located in my private svn repository, which i access with git.
-  = screenshots(@item)
+      %li Apple File Sharing (afp, smb or ftp)
+      %li Screen Sharing (vnc)
+      %li World Wide Web (http or https)
+      %li clipshlpr (funny clipboard sharing from a program i recently purchased)
+      %li Secure File Sharing (sftp)
+      %li Network File System (nfs)
+      %li Secure Shell (ssh)
+    enabled.
+    When I come into my homenetwork, my media, download server and so on are also discoverable via bonjour. It is a technology that makes one simple thing in a good way.
+  %p
+    Unfortunately google does not provide a bonjour service on the android platform.
+    The networkbrowser is my try on doing the discovery part of bonjour (i dont support announcing right now) with std. java libraries in an extensible and android way.
+  %p
+    First I thought, that something like 50 cent would be a reasonable price for such a basic and very useful application, but several months in the android market showed, that the android people normalyy dont like buy applications and so the network browser is now a free application (which is only fait, because most of the work was done by the jmdns guys).
+  %p
+    For android 3. something I would really love to see zeroconf support integrated into the android platform by google.
+%a.header Implementation
+%div.chapter
+  %p
+    The networkbrowser simply browses through discoverable services and then tries to call seperately installable intents. I also provide some wrapper intents for:
+    %ul
+      %li ssh - mapped to connectbot
+      %li ftp - mapped to fsync
+      %li rfb - (remote framebuffer or vnc) mapped to androidvnc (i hope my patch to androidvnc makes it into the next release)
+      %li http - mapped to the default browse intent
+%a.header How to extend
+%div.chapter
+  As an application developer you have to ways of communicating with the network browser:
+  %ul
+    %li
+      Provide an intent that is called from the network browser when the user selects an service.
+    %li
+      Use the networkbrowser with startActivityForResult to get to the data of a service you want to connect to.
+  Examples are coming.
+%a.header Sources
+%div.chapter
+  The sources are located in my private svn repository, which i access with git.
+= screenshots(@item)

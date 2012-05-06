@@ -1,11 +1,10 @@
 - items = @items.reject{|i|i.binary?}
-%div.chapter
-  - groups = items.group_by{|i|i[:title].to_s.downcase[0,1]}.sort
-  %ul
-    - groups.each do |k,v|
-      %li
-        = k
-        %ul
-          - v.each do |i|
-            %li
-              = link(i)
+- groups = items.group_by{|i|i[:title].to_s.downcase[0,1]}.sort
+%ul
+  - groups.each do |k,v|
+    %li
+      = k
+      %ul
+        - v.each do |i|
+          %li
+            = link(i)

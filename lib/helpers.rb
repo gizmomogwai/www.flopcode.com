@@ -1,3 +1,5 @@
+include Nanoc::Helpers::Tagging
+
 def get_parents(item, items)
   all = []
   while item[:parent] != nil
