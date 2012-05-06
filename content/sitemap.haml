@@ -15,7 +15,7 @@
           %span (last modified: #{i.mtime.strftime('%Y-%m-%d')}, path: #{i.identifier})
   %a.header Index
   %div.chapter
-    - groups = items.group_by{|i|i[:title].to_s.downcase[0,1]}
+    - groups = items.group_by{|i|i[:title].to_s.downcase[0,1]}.sort
     %ul
       - groups.each do |k,v|
         %li

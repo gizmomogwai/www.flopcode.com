@@ -3,3 +3,7 @@ nanoc, haml, sass nokogiri
 see [[http://nokogiri.org/tutorials/installing_nokogiri.html][InstallingNokogiri]]
 gem install nokogiri -- --with-xml2-include=/Users/gizmo/.homebrew/Cellar/libxml2/2.7.8/include/libxml2 --with-xml2-lib=/Users/gizmo/.homebrew/Cellar/libxml2/2.7.8/lib --with-xslt-dir=/Users/gizmo/.homebrew/Cellar/libxslt/1.1.26 --with-iconv-include=/Users/gizmo/.homebrew/Cellar/libiconv/1.13.1/include --with-iconv-lib=/Users/gizmo/.homebrew/Cellar/libiconv/1.14/lib
 gem install nanoc haml sass
+* Tasks
+** TODO html5 [[http://www.w3.org/2003/12/semantic-extractor.html][w3c's Semantic Extractor]] should deliver an outline of the page
+** TODO tags
+** DONE sort alphabetical index
