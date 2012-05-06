@@ -8,7 +8,7 @@ def open(url)
   if is_mac?
     sh "open #{url}"
   else
-    sh "google-chrome #{url}"
+    sh "google-chrome #{url} &"
   end
 end
 
