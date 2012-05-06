@@ -1,9 +1,21 @@
 require 'nanoc3/tasks'
 
+def is_mac?
+  RUBY_PLATFORM.downcase.include?("darwin")
+end
+
+def open(url)
+  if is_mac?
+    sh "open #{url}"
+  else
+    sh "google-chrome #{url}"
+  end
+end
+
 desc 'deploy local webserver'
 task :deploy_local => :compile do
   sh 'rsync -gprt --partial output/ ~/Sites'
-  sh 'open http://localhost/~gizmo'
+  open('http://localhost/~gizmo')
 end
 
 desc 'deploy to production webserver'

@@ -1,1 +1,1 @@
-rvm use 1.9.3@www.flopcode.com
+rvm use 1.9.3@www.flopcode.com --create
