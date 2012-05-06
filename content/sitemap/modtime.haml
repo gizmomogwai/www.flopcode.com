@@ -1,0 +1,7 @@
+- items = @items.reject{|i|i.binary?}
+%div.chapter
+  %ul
+    - items.sort{ |i, j | j.mtime - i.mtime }.each do |i|
+      %li
+        = link(i)
+        %span (last modified: #{i.mtime.strftime('%Y-%m-%d')}, path: #{i.identifier})
