@@ -1,10 +1,27 @@
+!!! 5
 %html
   %head
     %title= "\"#{@item[:title]}\""
+    %script{:type=>"text/javascript", :src=>"/assets/jquery-1.7.2.min.js"}
+    %script{:type=>"text/javascript", :src=>"/assets/jquery.tagcanvas-1.17.1.min.js"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/style.css"}
+    %meta{'http-equiv'=>"content-type", :content=>"text/html", :charset=>"UTF-8"}
+    %script{:type=>"text/javascript"}
+      $(document).ready(function() {
+      $('canvas.tagCloud').tagcanvas({
+      maxSpeed : 0.05,
+      depth : 0.075,
+      weightMode: 'both',
+      weight: true,
+      wheelZoom: true,
+      weightGradient: {0: '#ffffff', 0.33:'#e2e4cb', 0.8:'#b4cb8a', 1:'#3e3e3e'},
+      outlineColour: "#ffffff",
+      outlineMethod: "colour"
+      });
+      });
   %body
     %div#all><
-      %div#nav><
+      %nav><
         - parents = get_parents(@item, @items)
         - content_children = @item.children.reject{|i|i.binary?}
         - do_collection(parents, 'parent', 'first', 'last') do |i, context, first, last|
@@ -18,5 +35,5 @@
         %h2.page><= @item[:page_title] || @item[:title] || "&nbsp;"
         %div.chapter><= yield
         &nbsp;
-      %div#footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}"
+      %footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}"
 
