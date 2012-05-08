@@ -129,33 +129,13 @@ table.cv
 a.block
   display: block
 
-a.tag-1
-  font-size: 1em
-  font-weight: 100
-a.tag-2
-  font-size: 1.1em
-  font-weight: 200
-a.tag-3
-  font-size: 1.2em
-  font-weight: 300
-a.tag-4
-  font-size: 1.3em
-  font-weight: 400
-a.tag-5
-  font-size: 1.5em
-  font-weight: 500
-a.tag-6
-  font-size: 1.7em
-  font-weight: 600
-a.tag-7
-  font-size: 1.9em
-  font-weight: 700
-a.tag-8
-  font-size: 2.1em
-  font-weight: 800
-a.tag-9
-  font-size: 2.3em
-  font-weight: 900
-a.tag-10
-  font-size: 2.7em
-  font-weight: 1000
+<%
+colors = get_colors
+(1..10).each do |i|
+  color = to_html(interpolate(colors, (i-1)/9.0))
+%>
+a.tag-<%= i %>
+  font-size: <%= format("%.1f", 1+(i-1)*0.2) %>em
+  font-weight: <%= [900, i*100].min %>
+  color: #<%= color %>
+<% end %>
