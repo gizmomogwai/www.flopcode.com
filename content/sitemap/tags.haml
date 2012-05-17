@@ -3,16 +3,16 @@
 - max = tags.inject(0) { |acc, p| [p[1], acc].max }
 - tags = tags.inject({}) { |acc, p| acc[p[0]] = ((p[1] / Float(max)) * 10).round ; acc}
 %a.header{:name=>'frequency'} Sorted by frequency
-- tags.to_a.sort{|a, b| b[1] <=> a[1]}.each do |key, value|
+- tags.to_a.sort{|a, b| ((b[1] <=> a[1]) == 0) ? (a[0] <=> b[0]) : (b[1] <=> a[1]) }.each do |key, value|
   %div.chapter
     %a{:name => key}= "#{key} (#{value})"
     %br
-    - items_with_tag(key).each do |item|
+    - items_with_tag_sorted(key).each do |item|
       = link_to(item[:title], item)
 %a.header{:name=>'alphabetically'} Sorted alphabetically
-- tags.to_a.sort{|a, b| b[0] <=> a[0]}.each do |key, value|
+- tags.to_a.sort{|a, b| a[0] <=> b[0]}.each do |key, value|
   %div.chapter
     %a{:name => key}= "#{key} (#{value})"
     %br
-    - items_with_tag(key).each do |item|
+    - items_with_tag_sorted(key).each do |item|
       = link_to(item[:title], item)

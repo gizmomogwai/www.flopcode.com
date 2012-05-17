@@ -58,3 +58,7 @@ def tags_with_count(items)
     acc
   end
 end
+
+def items_with_tag_sorted(key)
+  items_with_tag(key).sort{|a, b| a[:title] <=> b[:title] }
+end
