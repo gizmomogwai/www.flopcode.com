@@ -1,10 +1,5 @@
-- items = @items.reject{|i|i.binary?}
-- tags = items.inject({}) do |acc, i|
-  - tags = i[:tags] || []
-  - tags.each do |t|
-    - current = acc[t] || 0
-    - acc[t] = current + 1
-  - acc
+- items = content_items(@items)
+- tags = tags_with_count(items)
 - max = tags.inject(0) { |acc, p| [p[1], acc].max }
 - tags = tags.inject({}) { |acc, p| acc[p[0]] = ((p[1] / Float(max)) * 10).round ; acc}
 %a.header{:name=>'frequency'} Sorted by frequency

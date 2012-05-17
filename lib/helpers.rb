@@ -11,6 +11,7 @@ def get_parents(item, items)
   end
   return all.reverse
 end
+
 def screenshots(items)
   res = ""
   items.children.each do |i|
@@ -41,4 +42,19 @@ end
 
 def lorem
   "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+end
+
+def content_items(items)
+  items.reject{|i|i.binary?}
+end
+
+def tags_with_count(items)
+  items.inject({}) do |acc, i|
+    tags = i[:tags] || []
+    tags.each do |t|
+      current = acc[t] || 0
+      acc[t] = current + 1
+    end
+    acc
+  end
 end
