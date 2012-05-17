@@ -33,4 +33,9 @@ task :clean do
   sh 'rm -rf output/*'
 end
 
+desc 'restores output'
+task :restore_output => [:clean] do
+  sh 'git git@github.com:gizmomogwai/gizmomogwai.github.com.git output'
+end
+
 task :default => :deploy_local
