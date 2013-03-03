@@ -1,5 +1,7 @@
 # All files in the 'lib' directory will be loaded
 # before nanoc starts compiling.
+require 'haml'
+require 'sass'
 include Nanoc3::Filters
 include Nanoc3::Helpers::Filtering
 include Nanoc3::Helpers::Rendering
