@@ -1,7 +1,6 @@
-source :rubygems
+source 'https://rubygems.org'
 gem 'nanoc'
-gem 'ruby-treemap'
+gem 'ruby-treemap-fork'
 gem 'haml'
 gem 'nokogiri'
-gem 'erubis'
 gem 'sass'
