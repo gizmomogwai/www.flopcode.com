@@ -19,6 +19,15 @@
       outlineMethod: "colour"
       });
       });
+    %script{:type=>"text/javascript"}
+      $(document).ready(function() {
+      $('#disqus_thread').hide();
+      });
+      $(document).ready(function() {
+      $('#toggle_disqus_thread').click(function() {
+      $('#disqus_thread').fadeToggle();
+      });
+      });
     %script{:type=>"text/javascript", :src=>"/assets/google-analytics-tracking.js"}
   %body
     %div#all><
@@ -36,5 +45,8 @@
         %h2.page><= @item[:page_title] || @item[:title] || "&nbsp;"
         %div.chapter><= yield
         &nbsp;
-      %footer= "last modified: #{@item.mtime.strftime('%Y-%m-%d')} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}"
-
+      %footer><
+        last modified: #{@item.mtime.strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}
+      %div#disqus_thread
+        %script{:type=>"text/javascript"}= disqus_count('gizmomogwai')
+        %script{:type=>"text/javascript"}= disqus_script('gizmomogwai', @item[:title])

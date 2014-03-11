@@ -62,3 +62,31 @@ end
 def items_with_tag_sorted(key)
   items_with_tag(key).sort{|a, b| a[:title] <=> b[:title] }
 end
+
+def disqus_link(item)
+  return "<a id=\"toggle_disqus_thread\" data-disqus-identifier=\"#{item[:title]}\">Comments</a>"
+end
+
+def disqus_script(domain, id)
+<<-eos
+var disqus_identifier = '#{id}';
+var disqus_shortname = '#{domain}';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//#{domain}.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+eos
+end
+
+def disqus_count(domain)
+<<-eos
+var disqus_shortname = '#{domain}';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.type = 'text/javascript';
+  s.src = 'http://#{domain}.disqus.com/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+eos
+end
