@@ -14,14 +14,14 @@ end
 
 desc 'deploy local webserver'
 task :deploy_local => :compile do
-  sh 'rsync -gprt --partial output/ ~/Sites'
-  open('http://localhost/~gizmo')
+  sh "ruby -run -ehttpd output &"
+  open('http://localhost:8080')
 end
 
-desc 'deploy to production webserver'
-task :deploy do
-  sh 'rsync -r output/ gizmo@gizmomogwai.dyndns.org:/Users/gizmo/Sites'
-end
+#desc 'deploy to production webserver'
+#task :deploy do
+#sh 'rsync -r output/ gizmo@gizmomogwai.dyndns.org:/Users/gizmo/Sites'
+#end
 
 desc 'run nanoc3'
 task :compile => [:clean] do
