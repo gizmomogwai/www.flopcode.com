@@ -1,0 +1,20 @@
+%a.header Background
+%div.chapter
+  %p
+    I always wanted to have a flexible build indicator in hardware, that shows if something is wrong. Best would be a traffic light thing, but when you watch over many builds, its better to have a little more flexibility. One colleague of mine showed me the phantastic <a href="https://www.adafruit.com/">Adafruit</a> website. After some looking around I decided that the most flexible stup for me would be a <a href="https://www.raspberrypi.org">Raspberry</a> together with a so called <a href="https://learn.adafruit.com/dotstar-pi-painter">DotStar</a> led strip.
+%a.header HW
+%div.chapter
+  %p
+    Fortunately the tutorial at the adafruit website was very nice so even I managed to assemble the HW together first try. It till looks a little rough, but for now it works.
+%a.header SW
+%div.chapter
+  %p
+    Unfortunately Adfruits DotStar library is only available as python module. This means that the code to control the led-strip via <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus">SPI</a> cannot easily be reused for my favorite scripting <a href="https://www.ruby-lang.org">language</a>. Luckily the control of the led strip is straightforward <a href="https://github.com/gizmomogwai/dotstarlib">cpp</a> binding that was also easily to bring into the ruby world with the help of <a href="http://jasonroelofs.github.io/rice/">rice</a>.
+  %p
+    On top of this a simple ruby program poll my build-servers and shows some different lights and animations.
+%a.header Todo
+%div.chapter
+  %p
+    Make hardware setup nicer.
+  %p
+    Make use of <a href="https://github.com/ReactiveX/RxRuby">rx-ruby</a>. My first try with this leaked like hell, so I did it everything from scratch. Still would be nice to have a working rx implementation in ruby.
