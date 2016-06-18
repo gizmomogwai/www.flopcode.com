@@ -1,6 +1,6 @@
 - items = @items.reject{|i|i.binary?}
 %ul
-  - items.sort{ |i, j | j.mtime - i.mtime }.each do |i|
+  - items.sort{ |i, j | j[:mtime] - i[:mtime] }.each do |i|
     %li
       = link(i)
-      %span (last modified: #{i.mtime.strftime('%Y-%m-%d')}, path: #{i.identifier})
+      %span (last modified: #{i[:mtime].strftime('%Y-%m-%d')}, path: #{i.identifier})

@@ -1,4 +1,4 @@
-require 'nanoc3/tasks'
+require 'nanoc/tasks'
 
 def is_mac?
   RUBY_PLATFORM.downcase.include?("darwin")
@@ -23,9 +23,9 @@ end
 #sh 'rsync -r output/ gizmo@gizmomogwai.dyndns.org:/Users/gizmo/Sites'
 #end
 
-desc 'run nanoc3'
+desc 'run nanoc'
 task :compile => [:clean] do
-  sh 'nanoc co'
+  sh 'bundle exec nanoc co'
 end
 
 desc 'cleanup'

@@ -2,10 +2,10 @@
 # before nanoc starts compiling.
 require 'haml'
 require 'sass'
-include Nanoc3::Filters
-include Nanoc3::Helpers::Filtering
-include Nanoc3::Helpers::Rendering
-include Nanoc3::Helpers::LinkTo
+include Nanoc::Filters
+include Nanoc::Helpers::Filtering
+include Nanoc::Helpers::Rendering
+include Nanoc::Helpers::LinkTo
 
 def traverse_items(items, tree_element, item_element, &code)
   capture_haml do
@@ -24,6 +24,6 @@ def traverse_items(items, tree_element, item_element, &code)
 end
 
 def link(item)
-  # %a{:href=> "#{i.reps[0].path}"} #{i[:title]}
-  return "<a href=\"#{item.reps[0].path}\">#{item[:title]}</a>"
+  # %a{:href=> "#{i.reps[:default].path}"} #{i[:title]}
+  return "<a href=\"#{item.reps[:default].path}\">#{item[:title]}</a>"
 end

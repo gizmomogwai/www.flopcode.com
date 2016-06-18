@@ -40,13 +40,13 @@
         %div{:class=>"current#{parents.size == 0 ? ' first' : ''}#{content_children.size==0 ? ' last' : ''}"}= @item[:title]
         - do_collection(content_children, 'child', 'first', 'last') do |i, context, first, last|
           %div{:class=>"#{context}#{last==true ? ' last' : ''}"}
-            %a{:href=>"#{i.reps[0].path}"}<>= "#{i[:title]}"
+            %a{:href=>"#{i.reps[:default].path}"}<>= "#{i[:title]}"
       %div#main><
         %h2.page><= @item[:page_title] || @item[:title] || "&nbsp;"
         %div.chapter><= yield
         &nbsp;
       %footer><
-        last modified: #{@item.mtime.strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}
+        last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}
       %div#disqus_thread
         %script{:type=>"text/javascript"}= disqus_count('gizmomogwai')
         %script{:type=>"text/javascript"}= disqus_script('gizmomogwai', @item[:title])
