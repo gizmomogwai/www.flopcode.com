@@ -1,0 +1,45 @@
+%p
+  <a href="https://dlang.org">dlang</a> is a fantastic language. Also in the last years the ecosystem evolved considerably. It brings many batteries included so lets describe a quick project setup:
+
+%br
+
+%a.header Project creation
+%div.chapter
+  dlang comes with <a href="https://code.dlang.org">dub</a> a package manager and buildsystem at the same time. This is now part of the reference compiler so you can start your project simply with <a href="https://code.dlang.org/getting_started"><code class="lang-javascript">dub init</code></a>. I suggest to add <a href="http://code.dlang.org/packages/unit-threaded">unit-threaded</a> as dependency to get a nice testing framework in place. The details can get tricky so I suggest to come up with several dub configurations:
+  %ul
+    %li
+      application: if your module is an application this uses source/app.d to start your program
+    %li
+      library: if you want to reuse your module, make it a proper library.
+    %li
+      unittest: for me the following block works best:
+      %pre
+        %code.lang-javascript
+          :preserve
+            configuration "unittest" {
+              targetType "executable"
+              targetName "unittest"
+              buildOptions "coverage"
+
+              dependency "unit-threaded" version="==0.7.22"
+              preBuildCommands "dub run unit-threaded -c gen_ut_main -- -f gen/testsuite.d"
+              mainSourceFile "gen/testsuite.d"
+              excludedSourceFiles "source/app.d"
+            }
+    %li
+      ut: for running quick unittests with unit-threaded:
+      %pre
+        %code.lang-javascript
+          :preserve
+            configuration "ut" {
+              targetType "executable"
+              targetName "ut"
+              buildOptions "coverage"
+
+              versions "unitThreadedLight"
+              dependency "unit-threaded" version="==0.7.22"
+              mainSourceFile "gen/testsuite.d"
+              excludedSourceFiles "source/app.d"
+            }
+  With this enabled you can run <code class="lang-javascript">dub test -c ut || dub test</code> to get a quick feedback if all tests are green, and a detailed feedback if tests are red.
+  By specifying coverage as build options you also get the dlang builtin coverage when running your tests (watch out for lst files).

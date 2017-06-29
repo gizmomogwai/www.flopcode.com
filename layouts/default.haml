@@ -5,6 +5,7 @@
     %script{:type=>"text/javascript", :src=>"/assets/jquery-1.7.2.min.js"}
     %script{:type=>"text/javascript", :src=>"/assets/jquery.tagcanvas-1.17.1.min.js"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/style.css"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/prism.css"}
     %meta{'http-equiv'=>"content-type", :content=>"text/html", :charset=>"UTF-8"}
     %script{:type=>"text/javascript"}
       $(document).ready(function() {
@@ -30,6 +31,7 @@
       });
     %script{:type=>"text/javascript", :src=>"/assets/google-analytics-tracking.js"}
   %body
+    %script{:type=>"text/javascript", :src=>"/assets/prism.js"}
     %div#all><
       %nav><
         - parents = get_parents(@item, @items)

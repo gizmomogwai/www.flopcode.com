@@ -7,3 +7,4 @@ data_sources:
     identifier_type: legacy
     items_root: /
     layouts_root: /
+    encoding: utf-8

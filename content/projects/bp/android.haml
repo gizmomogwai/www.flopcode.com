@@ -1,0 +1,165 @@
+%a.header Tooling
+%div.chapter
+  %p
+    Whenever I return to android development after half a year, I need at least one day to get decent versions of all the needed component work nicely together. The most important (but not all) of these components are:
+    %ul
+      %li Update android-sdk
+      %ul
+        %li tools (the tools updater itself, emulator, ...)
+        %li platform-tools (adb, fastboot, ...)
+        %li build-tools (aapt, aidl, dx, zipalign. this version should be synced to build.gradle)
+        %li sdk-platform (android sdk itself should be synced to build.gradle)
+        %li android support repository
+        %li android support library
+      %li latest version of intellij
+      %li update your gradle installation
+  %p
+    To get the best results I use almost always the latest stable versions. Only take rc's, betas, ... if you know exactly what you are doing. Most of the time you have to update them quite soon.
+%a.header Versioning
+%div.chapter
+  %p
+    As all sources are in git, I suggest to use the following scheme to version android. Keep the versions out of <code class="lang-javascrip">AndroidManifest.xml</code> and put them instead into build.gradle. Manage <code class="lang-javascript">versionCode</code> manually (or automate this in a release script), generate <code class="lang-javascript">versionName</code> by <code class="lang-javascript">git describe --dirty</code>. For git describe to work always, there has to be a tag in the repository. It does not work on a repository without tags.
+  %p
+    Minimal snippet of build.gradle to get this working:
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        android {
+          defaultConfig {
+            versionCode 2
+            versionName "git describe --dirty".execute().text.trim();
+          }
+        ...
+
+%a.header Module structure
+%div.chapter
+  %p
+    I suggest to divide the app into one part purely java and unit test this extensively, and another part that does all the android and ui specific glue code. In the best case this should not be too much on top of the real business logic.
+  %p
+    settings.gradle -
+    just pulls in all the modules
+  %pre
+    %code.lang-groovy
+      :preserve
+        include ':lib'
+        include ':app'
+  %p
+    lib/build.gradle -
+    normal java project with 1.7 compatibility
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+        ...
+  %p
+    app/build.gradle This is the most tricky one, I will go through step by step
+  %p
+    Android build tools are needed for the buildscript itself (this must be fitting for intellij's and gradle's versions):
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        buildscript {
+          repositories {
+            jcenter()
+            mavenCentral()
+          }
+          dependencies {
+            classpath 'com.android.tools.build:gradle:2.3.3'
+          }
+        }
+        apply plugin: 'com.android.application'
+        ...
+  %p
+    Pull in your libs:
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        dependencies {
+          compile ...
+          annotationProcessor ...
+          compile project(':lib')
+        }
+        ...
+  %p
+%a.header Unit-Testing
+%div.chapter
+  %p
+    Because of the separation it is possible to do a lot of work with normal unit-tests. I did not look into android unit-testing in the last years, but it is supposed to be more evolved than to the android 1.0 time. Still I prefer to test as much as possible with normal junit tests.
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        test {
+          testLogging {
+            showStandardStreams = true
+            exceptionFormat = 'full'
+          }
+        }
+        apply plugin: 'jacoco'
+        jacocoTestReport {
+          reports {
+            html.enabled = true
+            xml.enabled = true
+            csv.enabled false
+          }
+        }
+        check.dependsOn jacocoTestReport
+        ...
+%a.header Distinguing between debug and release versions
+%div.chapter
+  %p
+    the gradle android build is very sophisticated in producing different flavors and whatnot of the application. For simple application it is important to know, that you can deploy several versions to the target at the same time (e.g. one debug and one release version). To make it more easy to distinguing between them its possible to do adjustments like this in app/build.gradle:
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        android {
+          buildTypes {
+            release {
+              applicationIdSuffix ".release"
+              resValue "string", "app_name", "Appname"
+            }
+            debug {
+              applicationIdSuffix ".debug"
+              resValue "string", "app_name", "Appname-Debug"
+            }
+          }
+        ...
+%a.header Release to play-store
+%div.chapter
+  %p
+    Prerequisites:
+    %ul
+      %li
+        Various artwork
+      %li
+        Keystore for signing the apk. I suggest you use the <a href="https://developer.android.com/studio/publish/app-signing.html">Google Play App Signing</a>. There google creates and keeps a certificate for signing apps that you upload with your upload certificate. In case you loose the upload certificate, you can revoke this and put a new one to google play.
+  %p
+    Put the signing into gradle like described on the google page. The only twist I use is to store the password in the keychain/ring:
+  %pre
+    %code.lang-groovy
+      :preserve
+        ...
+        // from http://stackoverflow.com/a/22597752
+        def passwordFromKeychain = { name ->
+          return "security find-generic-password -s ${name} -a ${name} -w".execute().text.trim();
+        }
+        android {
+          signingConfigs {
+            release {
+              // just add a new password with appname-play-store, appname-play-store and password in keychain on osx
+              storeFile file("store/release.keystore")
+              storePassword passwordFromKeychain("appname-play-store")
+              keyAlias "appname"
+              keyPassword passwordFromKeychain("appname-play-store")
+            }
+          }
+          buildTypes {
+            release {
+              signingConfig signingConfigs.release
+        ...

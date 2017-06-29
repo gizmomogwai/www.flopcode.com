@@ -1,0 +1,25 @@
+%p
+  When you start many small projects in different environments its good to have some templates and best practices, that lead you through the <a href="http://www.yegor256.com/2015/08/04/nine-steps-start-software-project.html">tedious setup steps</a>. Without the foundation you forget or jump over e.g. writing nice unit-tests, just because you do not have the place to put the stuff.
+
+%br
+
+%a.header The good
+%div.chapter
+  <a href="http://rubyonrails.org">RoR</a> gives a nice example when creating a new controller. Together with the controller itself and the basic operations routes and unittests are added to the project. Some goes for creating gems with <a href="http://bundler.io/v1.14/guides/creating_gem.html">bundler</a>. You get places to put your version, your unit-tests, your modules and your documentation.
+
+%a.header The bad
+%div.chapter
+  An example in the opposite direction is starting e.g. a c++ project from scratch. There are many things to setup, before real development can start:
+  %ul
+    %li
+      how to build
+    %li
+      which test framework
+    %li
+      how to get code coverage
+    %li
+      how to write javadocs
+    %li
+      how to reference dependencies
+    %li
+      how to ci

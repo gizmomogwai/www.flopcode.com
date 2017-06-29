@@ -1,4 +1,4 @@
-require 'nanoc/tasks'
+#require 'nanoc/tasks'
 
 def is_mac?
   RUBY_PLATFORM.downcase.include?("darwin")
@@ -35,7 +35,7 @@ end
 
 desc 'restores output'
 task :restore_output => [:clean] do
-  sh 'git git@github.com:gizmomogwai/gizmomogwai.github.com.git output'
+  sh 'git clone git@github.com:gizmomogwai/gizmomogwai.github.com.git output'
 end
 
 task :default => :deploy_local

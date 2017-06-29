@@ -1,6 +1,7 @@
 # All files in the 'lib' directory will be loaded
 # before nanoc starts compiling.
 require 'haml'
+Haml::Options.defaults[:ugly] = true
 require 'sass'
 include Nanoc::Filters
 include Nanoc::Helpers::Filtering
