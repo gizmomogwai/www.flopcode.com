@@ -1,18 +1,20 @@
-%a.header Tooling
+%a.header Install android tooling
 %div.chapter
   %p
-    Whenever I return to android development after half a year, I need at least one day to get decent versions of all the needed component work nicely together. The most important (but not all) of these components are:
+    Whenever I return to android development after half a year, I need at least one day to get decent versions of all the needed component work nicely together. This time I started from scratch:
     %ul
-      %li Update android-sdk
-      %ul
-        %li tools (the tools updater itself, emulator, ...)
-        %li platform-tools (adb, fastboot, ...)
-        %li build-tools (aapt, aidl, dx, zipalign. this version should be synced to build.gradle)
-        %li sdk-platform (android sdk itself should be synced to build.gradle)
-        %li android support repository
-        %li android support library
-      %li latest version of intellij
-      %li update your gradle installation
+      %li Set ANDROID_HOME to a empty directory
+      %li Download the <a href="https://developer.android.com/studio/index.html">sdk</a> and only the sdk
+      %li <code class="lang-javascript">unzip -d $ANDROID_HOME ~/Downloads/sdk-tools-darwin/linux-version.zip</code>
+      %li In $ANDROID_HOME run <code class="lang-javascript">tools/bin/sdkmanager --licenses</code> to accept all current licenses
+      %li In $ANDROID_HOME run <code class="lang-javascript">tools/bin/sdkmanager --update</code> to bring the tool itself uptodate
+      %li
+        %ul
+          %li
+            In $ANDROID_HOME run <code class="lang-javascript">tools/bin/sdkmanager packagenames</code> to install all needed packages
+          %li
+            For me: <code class="lang-javascript">tools/bin/sdkmanager "build-tools;26.0.0" "extras;android;m2repository" "platform-tools" "platforms;android-23"</code> followed by <code class="lang-javascript">tools/bin/sdkmanager --uninstall emulator</code> results in around 750GB of development tools needed for one of my current apps.
+      %li Download the newest intellij (I use the jetbrains toolbox) and start a new android project there
   %p
     To get the best results I use almost always the latest stable versions. Only take rc's, betas, ... if you know exactly what you are doing. Most of the time you have to update them quite soon.
 %a.header Versioning
@@ -89,7 +91,7 @@
 %a.header Unit-Testing
 %div.chapter
   %p
-    Because of the separation it is possible to do a lot of work with normal unit-tests. I did not look into android unit-testing in the last years, but it is supposed to be more evolved than to the android 1.0 time. Still I prefer to test as much as possible with normal junit tests.
+    Because of the separation it is possible to do a lot of work with normal unit-tests. I did not look into android unit-testing in the last years, but it is supposed to be more evolved than to the android 1.0 time. Still I prefer to test as much as possible with normal junit tests. These are my settings for normal java modules:
   %pre
     %code.lang-groovy
       :preserve
@@ -110,6 +112,19 @@
         }
         check.dependsOn jacocoTestReport
         ...
+  %p
+    For android modules I have this in place:
+    %pre
+      %code.lang-groovy
+        :preserve
+          ...
+          android {
+            testOptions.unitTests.all {
+              testLogging {
+              events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            }
+          }
+          ...
 %a.header Distinguing between debug and release versions
 %div.chapter
   %p
