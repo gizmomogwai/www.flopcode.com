@@ -21,19 +21,16 @@ compile '*' do
   end
 end
 
-
 route '*' do
   if item[:extension].end_with?('sass')
-    r = item.identifier.chop + '.' + 'css'
+    item.identifier.chop + '.css'
   elsif item[:extension] == 'haml'
-    r = item.identifier + 'index.html'
+    item.identifier + 'index.html'
   elsif item.binary?
-    r = item.identifier.chop + '.' + item[:extension]
+    item.identifier.chop + '.' + item[:extension]
   else
-    r = item.identifier + 'index.html'
+    item.identifier + 'index.html'
   end
-  # puts "route #{item.identifier} #{item[:extension]} => #{r}"
-  r
 end
 
 layout '*', :haml, :format => :html5
