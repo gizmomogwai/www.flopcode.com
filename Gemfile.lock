@@ -35,7 +35,7 @@ GEM
       ddplugin (~> 1.0)
       hamster (~> 3.0)
       json_schema (~> 0.19)
-    nokogiri (1.10.1)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     pandoc-ruby (2.0.2)
     parallel (1.13.0)
