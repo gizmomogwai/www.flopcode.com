@@ -15,7 +15,7 @@ end
 desc 'deploy local webserver'
 task :deploy_local => :compile do
   sh "ruby -run -ehttpd output &"
-  open('http://localhost:8080/projects/bp/futures/')
+  open('http://localhost:8080/projects/bp/build/')
 end
 
 #desc 'deploy to production webserver'
