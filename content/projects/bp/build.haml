@@ -1,0 +1,134 @@
+%p
+  Building software projects is hard. Here are some best practices:
+
+  %a.header Make it fast
+  %div.chapter
+    %p
+      There is the continuous struggle
+      between make it right and make it fast.
+      <a href="https://bazel.build/">Some</a> buildsystems promise to
+      combine both goals.
+
+  %a.header Make dev builds superfast
+  %div.chapter
+    %p
+      We all know that multitasking is evil. Every build that runs
+      longer than 10s <a href="https://xkcd.com/303/>enhances</a>
+      the chance that we drift off an start multitasking.
+          
+  %a.header Incremental
+  %div.chapter
+      
+  %a.header Put version and build information into product
+  %div.chapter
+    %p 
+      While a builddate is very convenient for humans to process it
+      is a hard to do reproducible builds with this, unless you inject
+      the date from the outside into the product. Inversion of control
+      do not just call /usr/bin/date but let the buildserver prepare
+      the date for you e.g. in an environment variable.
+
+  %a.header Build releases from clean builds
+  %div.chapter
+    %p
+      Just to be on the safe side a release build should start from
+      scratch.
+
+  %a.header Make a clean build once a day
+  %div.chapter
+    %p
+      Just to make sure, that everything including licenses and os
+      updates still works as expected.
+
+  %a.header Make workspace as small as possible
+  %div.chapter
+    %p
+      Less data is always better. Faster clones, less resources taken,
+      opens the option to have more builds in parallel.
+
+  %a.header Make your build correct
+  %div.chapter
+    %p
+      If it behaves in unexpected ways, fix it.
+
+  %a.header Does your build delete "old" files?
+  %div.chapter
+    %p
+      Interesting example for incorrect builds.
+
+  %a.header Clone shallow vs. Clone full
+  %div.chapter
+    %p
+      Normally a buildserver is not interested in the history of the
+      repository. On the other hand it needs some context, to show
+      what was changed. For me the best option is a shallow clone,
+      that can be also used to incrementally pull. Because a pull with
+      not much changes will still be faster than a full shallow clone.
+
+  %a.header Keep the buildfile as small as possible
+  %div.chapter
+    %p
+      The build should be as simple as possible.
+      e.g. make is better than make clean generate build test release
+
+  %a.header All parties should use one buildfile
+  %div.chapter
+    %p
+      The buildfile should work for all parties. Its a wide range from
+      developers to buildservers. If all use the same, errors are
+      found earlier on and the project makes sure that all important
+      steps are in git.
+
+  %a.header Bring your own tools
+  %div.chapter
+    %p
+      My first choice is to not depend on preinstalled tools but put
+      everything into the workspace and make it self contained.
+      Another option is using docker images, but this has another set
+      of drawbacks.
+
+  %a.header Try to avoid gaps/bridges between buildsystems
+  %div.chapter
+    %p
+      Every gap between different buildsystems makes the whole image
+      less correct / efficient. E.g. recursive make considered
+      harmful.
+
+  %a.header Build out of source
+  %div.chapter
+    %p
+      Put all build artifacts to a common folder structure that is
+      outside of the source folders. This makes your gitignore files
+      very straight forward + you do not even need a clean buildstep,
+      because you just can delete one folder.
+
+  %a.header Keep your logs down
+  %div.chapter
+    %p
+      Make your buildlogs meaningful. Reduce warnings, remove debug
+      output.
+      
+  %a.header Keep only what you need - aka jenkins archives
+  %div.chapter
+    %p
+      The results of a build should be as compact as possible.
+      Saving everything without a requirement is not fast and not
+      cheap.
+
+  %a.header Let the buildserver scale your build
+  %div.chapter
+    %p
+      Do not hardcode -j16 or something into your build. This should
+      be possible for the buildservers to decide. They know best what
+      resources they have and how many parallel jobs they have to
+      serve.
+
+  %a.header Dirty but fast
+  %div.chapter
+    %p
+      A viable compromis might be to do some edges of the build in a
+      dirty way, if it really brings speed. E.g. create dockerimages
+      with a snapshot, so that not all work has to be done from
+      scratch. 
+
+

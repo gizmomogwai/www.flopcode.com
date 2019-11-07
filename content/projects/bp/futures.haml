@@ -1,0 +1,78 @@
+%p
+  In the procedural cases, all functions are synchron, they return their result directly.
+  In the futures cases, all functions return futures/promises.
+%table
+  %tr
+    %th
+      Description
+    %th
+      Procedural
+    %th
+      Futures
+
+  %tr
+    %td
+      Normal code with exception handling
+    %td
+      %pre
+        %code.lang-java
+          :preserve
+            try {
+              auto v = f1();
+              return f2(v);
+            } catch (Exception e) {
+              return f3();
+            }
+    %td
+      %pre
+        %code.lang-java
+          :preserve
+            return f1()
+              .thenCompose(v => f2(v))
+              .catchException(f3())
+                
+  %tr
+    %td
+      Nesting
+    %td
+      %pre
+        %code.lang-java
+          :preserve
+            return f1(f2(f3()));
+    %td
+      %pre
+        %code.lang-java
+          :preserve
+            f3()
+              .then(v => f2(v))
+              .then(v => f1(v))
+  %tr
+    %td Nested ifs
+    %td
+      %pre
+        %code.lang-java
+          :preserve
+            if (f1()) {
+              return f2();
+            } else if (f3()) {
+              return f4();
+            } else {
+              return f5();
+            }
+    %td
+      %pre
+        %code.lang-java
+          :preserve
+            f1().thenCompose(v =>
+                if (v) {
+                  return f2();
+                } else {
+                  return f3()
+                    .thenCompose(v =>
+                       if (v) {
+                         return f4();
+                       } else {
+                         return f5();
+                       }
+                     };
+                }
