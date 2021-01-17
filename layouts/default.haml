@@ -48,9 +48,24 @@
       interval: null
       });
       });
+    %script{:type=>"text/javascript"}
+      $(document).ready(function() {
+      var docHeight = $(document).height();
+      console.log(docHeight);
+      var windowHeight = $(window).height();
+      console.log(windowHeight);
+      var scrollPercent = 0;
+      $(window).scroll(function() {
+      scrollPercent = $(window).scrollTop() / (docHeight - windowHeight) * 100;
+      console.log(scrollPercent);
+      $('#progress').width(scrollPercent + '%');
+      });
+      });
     %script{:type=>"text/javascript", :src=>"/assets/google-analytics-tracking.js"}
     %script{:type=>"module", :src=>"//instant.page/1.0.0", :integrity=>"sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"}
   %body
+    #page-scroll-indicator
+      #progress
     %div#all><
       %nav><
         - parents = get_parents(@item, @items)
