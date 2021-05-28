@@ -3,12 +3,12 @@
   %head
     %title= "\"#{@item[:title]}\""
     %script{type: "text/javascript", src: "https://code.jquery.com/jquery-3.6.0.min.js"}
-    %script{:type=>"text/javascript", :src=>"/assets/jquery.tagcanvas-1.17.1.min.js"}
-    %script{:type=>"text/javascript", :src=>"/assets/pagemap-1.2.0.min.js"}
-    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/style.css"}
-    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/prism.css"}
-    %meta{'http-equiv'=>"content-type", :content=>"text/html", :charset=>"UTF-8"}
-    %script{:type=>"text/javascript"}
+    %script{type: "text/javascript", src: "/assets/jquery.tagcanvas-1.17.1.min.js"}
+    %script{type: "text/javascript", src: "/assets/pagemap-1.2.0.min.js"}
+    %link{rel: "stylesheet", type: "text/css", href: "/assets/styles/style.css"}
+    %link{rel: "stylesheet", type: "text/css", href: "/assets/styles/prism.css"}
+    %meta{'http-equiv'=>"content-type", content: "text/html", charset: "UTF-8"}
+    %script{type: "text/javascript"}
       $(document).ready(function() {
       $('canvas.tagCloud').tagcanvas({
       maxSpeed : 0.05,
@@ -21,7 +21,7 @@
       outlineMethod: "colour"
       });
       });
-    %script{:type=>"text/javascript"}
+    %script{type: "text/javascript"}
       $(document).ready(function() {
       $('#disqus_thread').hide();
       });
@@ -30,7 +30,7 @@
       $('#disqus_thread').fadeToggle();
       });
       });
-    %script{:type=>"text/javascript"}
+    %script{type: "text/javascript"}
       $(document).ready(function() {
       console.log(document.querySelector("a:visited"));
       pagemap(document.querySelector('#map'), {
@@ -48,10 +48,10 @@
       interval: null
       });
       });
-    %script{:type=>"text/javascript", src: "/assets/page-progressbar.js"}
-    %script{:type=>"text/javascript", :src=>"/assets/google-analytics-tracking.js"}
-    %script{:type=>"text/javascript", :src=>"/assets/wobble-links.js"}
-    %script{:type=>"module", :src=>"//instant.page/1.0.0", :integrity=>"sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"}
+    %script{type: "text/javascript", src: "/assets/page-progressbar.js"}
+    %script{type: "text/javascript", src: "/assets/google-analytics-tracking.js"}
+    %script{type: "text/javascript", src: "/assets/wobble-links.js"}
+    %script{type: "module", src: "//instant.page/1.0.0", integrity: "sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"}
   %body
     #page-scroll-indicator
       #progress
@@ -60,19 +60,19 @@
         - parents = get_parents(@item, @items)
         - content_children = @item.children.reject{|i|i.binary?}
         - do_collection(parents, 'parent', 'first', 'last') do |i, context, first, last|
-          %div{:class=>"#{context}#{first==true ? ' first' : ''}"}
-            %a{:href=>"#{i.identifier}"}<>= "#{i[:title]}"
-        %div{:class=>"current#{parents.size == 0 ? ' first' : ''}#{content_children.size==0 ? ' last' : ''}"}= @item[:title]
+          %div{class: "#{context}#{first==true ? ' first' : ''}"}
+            %a{href: "#{i.identifier}"}<>= "#{i[:title]}"
+        %div{class: "current#{parents.size == 0 ? ' first' : ''}#{content_children.size==0 ? ' last' : ''}"}= @item[:title]
         - do_collection(content_children, 'child', 'first', 'last') do |i, context, first, last|
-          %div{:class=>"#{context}#{last==true ? ' last' : ''}"}
-            %a{:href=>"#{i.reps[:default].path}"}<>= "#{i[:title]}"
+          %div{class: "#{context}#{last==true ? ' last' : ''}"}
+            %a{href: "#{i.reps[:default].path}"}<>= "#{i[:title]}"
       %div#main><
         %h2.page><= @item[:page_title] || @item[:title] || "&nbsp;"
         %div.chapter><= yield
         &nbsp;
       %footer><
-        last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, {:base_url => "/sitemap/tags/#"})}
+        last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, {base_url: "/sitemap/tags/#"})}
       %div#disqus_thread
-        %script{:type=>"text/javascript"}= disqus_count('gizmomogwai')
-        %script{:type=>"text/javascript"}= disqus_script('gizmomogwai', @item[:title])
+        %script{type: "text/javascript"}= disqus_count('gizmomogwai')
+        %script{type: "text/javascript"}= disqus_script('gizmomogwai', @item[:title])
     %canvas#map

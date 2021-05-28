@@ -9,11 +9,11 @@
 - tags = tags.inject({}) { |acc, p| acc[p[0]] = ((p[1] / Float(max)) * 10).round ; acc}
 - tags.each do |key, value|
   - link = "/sitemap/tags/\##{key}"
-  %a{:href=>link, :class=>"tag-#{value}"}= key
+  %a{href: link, class: "tag-#{value}"}= key
 
-%canvas.tagCloud#tagCloud{:width=>"750px", :height=>"300px"}
+%canvas.tagCloud#tagCloud{width: "750px", height: "300px"}
   %ul
     - tags.each do |key, value|
       %li
         - link = "/sitemap/tags/\##{key}"
-        %a{:href=>link, :class=>"tag-#{value}"}= key
+        %a{href: link, class: "tag-#{value}"}= key

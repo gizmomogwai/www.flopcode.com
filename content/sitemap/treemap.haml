@@ -1,8 +1,8 @@
 - items = content_items(@items)
-- root = Treemap::Node.new(:label => 'All')
+- root = Treemap::Node.new(label: "All")
 - tags = tags_with_count(items)
 - tags.to_a.sort{|a, b| b[1] <=> a[1]}.each do |tag, count|
-  - root.new_child(:size => count, :label => tag, :color => '#636363')
+  - root.new_child(size: count, label: tag, color: "#636363")
 - output = LinkedHtmlOutput.new do |o|
   - o.width = 400
   - o.height = 300
@@ -10,5 +10,5 @@
   - o.full_html = false
   - o.base_font_size = 20
   - o.tags = tags
-%div{:style => 'width: 400px; height: 300px; position: relative'}= output.to_html(root)
+%div{style: "width: 400px; height: 300px; position: relative"}= output.to_html(root)
 
