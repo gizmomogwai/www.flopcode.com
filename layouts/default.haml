@@ -2,7 +2,7 @@
 %html
   %head
     %title= "\"#{@item[:title]}\""
-    %script{:type=>"text/javascript", :src=>"/assets/jquery-1.7.2.min.js"}
+    %script{type: "text/javascript", src: "https://code.jquery.com/jquery-3.6.0.min.js"}
     %script{:type=>"text/javascript", :src=>"/assets/jquery.tagcanvas-1.17.1.min.js"}
     %script{:type=>"text/javascript", :src=>"/assets/pagemap-1.2.0.min.js"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/assets/styles/style.css"}
@@ -48,20 +48,9 @@
       interval: null
       });
       });
-    %script{:type=>"text/javascript"}
-      $(document).ready(function() {
-      var docHeight = $(document).height();
-      console.log(docHeight);
-      var windowHeight = $(window).height();
-      console.log(windowHeight);
-      var scrollPercent = 0;
-      $(window).scroll(function() {
-      scrollPercent = $(window).scrollTop() / (docHeight - windowHeight) * 100;
-      console.log(scrollPercent);
-      $('#progress').width(scrollPercent + '%');
-      });
-      });
+    %script{:type=>"text/javascript", src: "/assets/page-progressbar.js"}
     %script{:type=>"text/javascript", :src=>"/assets/google-analytics-tracking.js"}
+    %script{:type=>"text/javascript", :src=>"/assets/wobble-links.js"}
     %script{:type=>"module", :src=>"//instant.page/1.0.0", :integrity=>"sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"}
   %body
     #page-scroll-indicator

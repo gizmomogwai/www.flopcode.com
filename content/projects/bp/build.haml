@@ -13,15 +13,15 @@
   %div.chapter
     %p
       We all know that multitasking is evil. Every build that runs
-      longer than 10s <a href="https://xkcd.com/303/>enhances</a>
+      longer than 10s <a href="https://xkcd.com/303/">enhances</a>
       the chance that we drift off an start multitasking.
-          
+
   %a.header Incremental
   %div.chapter
-      
+
   %a.header Put version and build information into product
   %div.chapter
-    %p 
+    %p
       While a builddate is very convenient for humans to process it
       is a hard to do reproducible builds with this, unless you inject
       the date from the outside into the product. Inversion of control
@@ -110,7 +110,7 @@
     %p
       Make your buildlogs meaningful. Reduce warnings, remove debug
       output.
-      
+
   %a.header Keep only what you need - aka jenkins archives
   %div.chapter
     %p
@@ -132,6 +132,4 @@
       A viable compromis might be to do some edges of the build in a
       dirty way, if it really brings speed. E.g. create dockerimages
       with a snapshot, so that not all work has to be done from
-      scratch. 
-
-
+      scratch.
