@@ -1,19 +1,20 @@
 %a.header Install android tooling
 %div.chapter
   %p
-    Whenever I return to android development after half a year, I need at least one day to get decent versions of all the needed component work nicely together. This time I started from scratch:
+    Whenever I return to android development after half a year, I need at least one day to get decent versions of all the needed components work nicely together. This time I started from scratch:
     %ul
-      %li Set ANDROID_HOME to a empty directory
-      %li Download the <a href="https://developer.android.com/studio/index.html">sdk</a> and only the sdk
-      %li <code class="lang-javascript">unzip -d $ANDROID_HOME ~/Downloads/sdk-tools-darwin/linux-version.zip</code>
-      %li In $ANDROID_HOME run <code class="lang-javascript">tools/bin/sdkmanager --licenses</code> to accept all current licenses
-      %li In $ANDROID_HOME run <code class="lang-javascript">tools/bin/sdkmanager --update</code> to bring the tool itself uptodate
+      %li Set ANDROID_HOME to an empty directory (e.g. ~/bin/android)
+      %li Download the <a href="https://developer.android.com/studio#command-tools">command line tools</a> only
+      %li <code class="lang-javascript">mkdir -p $ANDROID_HOME/cmdline-tools/latest && unzip -d $ANDROID_HOME/cmdline-tools/latest ~/Downloads/commandlinetools-mac-7302050_latest.zip</code>
+      %li add $ANDROID_HOME/cmdline-tools/latest/bin, $ANDROID_HOME/platform-tools, $ANDROID_HOME/tools to the PATH
+      %li run <code class="lang-javascript">sdkmanager --licenses</code> to accept all current licenses
+      %li run <code class="lang-javascript">tools/bin/sdkmanager --update</code> to bring the tool itself uptodate
       %li
         %ul
           %li
-            In $ANDROID_HOME run <code class="lang-javascript">tools/bin/sdkmanager packagenames</code> to install all needed packages
+            run <code class="lang-javascript">sdkmanager packages</code> to install all needed packages
           %li
-            For me: <code class="lang-javascript">tools/bin/sdkmanager "build-tools;26.0.0" "extras;android;m2repository" "platform-tools" "platforms;android-23"</code> followed by <code class="lang-javascript">tools/bin/sdkmanager --uninstall emulator</code> results in around 750GB of development tools needed for one of my current apps.
+            For me: <code class="lang-javascript">sdkmanager "build-tools;26.0.0" "extras;android;m2repository" "platform-tools" "platforms;android-23"</code> followed by <code class="lang-javascript">sdkmanager --uninstall emulator</code> results in around 900MB of development tools needed for one of my current apps.
       %li Download the newest intellij (I use the jetbrains toolbox) and start a new android project there
   %p
     To get the best results I use almost always the latest stable versions. Only take rc's, betas, ... if you know exactly what you are doing. Most of the time you have to update them quite soon.
