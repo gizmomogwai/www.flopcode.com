@@ -71,7 +71,7 @@
         %div.chapter><= yield
         &nbsp;
       %footer><
-        last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, {base_url: "/sitemap/tags/#"})}
+        last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, base_url: "/sitemap/tags/#")}
       %div#disqus_thread
         %script{type: "text/javascript"}= disqus_count('gizmomogwai')
         %script{type: "text/javascript"}= disqus_script('gizmomogwai', @item[:title])
