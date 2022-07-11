@@ -84,12 +84,14 @@ GEM
       pastel (~> 0.8)
     tty-platform (0.3.0)
     tty-which (0.5.0)
+    webrick (1.7.0)
     zeitwerk (2.5.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
   haml
   haml-contrib
   nanoc
@@ -99,6 +101,7 @@ DEPENDENCIES
   rexml
   ruby-treemap-fork
   sass
+  webrick
 
 BUNDLED WITH
    2.3.7
