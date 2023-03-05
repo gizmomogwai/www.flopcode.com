@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rake'
 gem 'nanoc'
+gem 'nanoc-live'
 gem 'ruby-treemap-fork'
 gem 'haml'
 gem 'haml-contrib'

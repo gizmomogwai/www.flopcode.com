@@ -26,7 +26,7 @@ end
 
 desc 'run nanoc'
 task :compile => [:clean] do
-  sh 'bundle exec nanoc co'
+  sh 'bundle exec nanoc compile'
 end
 
 desc 'cleanup'

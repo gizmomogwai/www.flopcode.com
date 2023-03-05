@@ -1,0 +1,89 @@
+%a.header Story
+%div.chapter
+  %p
+    Everybody likes to work different. Here I describe how I work with
+    dlang.
+%a.header Installation
+%div.chapter
+  %p
+    I rely on the <a href="https://dlang.org/install.html">install.sh</a>
+    script. It works at least for dmd, ldc and gdc (the three main dlang
+    compilers).
+    Normally I go for dmd or ldc.
+  %p
+    As all my projects use dub basic setup is complete with that, on top
+    are only convinient functions.
+
+%a.header Shell
+%div.chapter
+  %p
+    My fish shell is natively supported by install.sh so I can simply
+    <code>source ~/dlang/dmd-2.*/activate.fish</code> of the version I
+    would like to use.
+  %p
+    On top of that I also have a small dub wrapper called d, that not
+    only makes it possible to call dub from any subfolder of a project,
+    but it also selects the compiler version based on a
+    <code>.dlang-version</code> file that is searched for till the root
+    of the filesystem. Also it enforces out of sourcetree builds for runs
+    and tests.
+
+%a.header Editor
+%div.chapter
+  %p
+    The one stop shop is probably now VSCode + the Code-D plugin, but I
+    like to use Emacs.
+  %p
+    projectile needs a new project definition to recognise dub projet.
+    Mine looks like this:
+    %pre
+      %code.lang-javascript
+        :preserve
+          (projectile-register-project-type
+            'dlang
+            '("dub.sdl")
+            :compile "source ~/dlang/dmd-2.100.0/activate.fish && dub build"
+            :test "source ~/dlang/dmd-2.100.0/activate.fish && dub test --coverage"
+            :run "source ~/dlang/dmd-2.100.0/activate.fish && dub run"
+          )
+    Its also possible to add more dub features into either of those, e.g. <code>dub run dfmt -- -i .</code>
+    or <code>dub run dscanner -- --styleCheck .</code>
+  %p
+    I also have a custom flycheck checker that feeds the normal dub error messags back into
+    flycheck which then highlights build problems and lets one jump to them.
+
+%a.header Code Quality
+%div.chapter
+  %p
+    For code layout I use <code>dub run dfmt -- -i .</code> without any special options. In the beginning e.g.
+    the angel brackets on a new line was very strange for me, but now I just go with dfmt's defaults hoping for
+    an uniform codebase also in other projects (actually I do not understand the need for customization in a
+    tool like dfmt). In long method call chains I use <code>//dfmt off/on</code> to fallback to manually
+    formatted sources.
+  %p
+    Dlang already supports at least line coverage in its default tooling, so if you run your tests with
+    <code>dub test --coverage</code> you get a bunch of nice <code>*.lst</code> files, that describe which lines
+    have been executed how often. Into the dub unittest configuration I like to add a
+    <code>postRunCommands "$DUB run lst2errormessages || true"</code> to get uncovered lines as warnings in the
+    normal "compiler" output.
+  %p
+    <code>dub lint</code> does the trick.
+  %p
+    To keep best practices for my dlang projects in place, I have a small helper called ponies, that helps me
+    to groom my projects.
+  %p
+    Sooner or later licenses of dependencies are always getting interesting in real life projects. For that I
+    use packageinfo in my dlang project to see, if there are some foul licenses involved (usually not in the
+    dlang eco system).
+  
+%a.header CI
+%div.chapter
+  %p
+    Most dlang development is done on github + uses the excellent gitlab workflows
+    (dlang-community/setup-dlang@v1, codecov/codecov-action@v2).
+  %p
+    I wanted to try gitlab ci for a very long time and recently switched to that. All my dub projects now build
+    with their own docker image, which is created by a shared git repo pulled in as submodule (at the moment in
+    version v1.0.2). I am quite happy with this, besides that it takes quite a while to build a docker image and
+    then wait on the individual steps of the workflow. A local build for a small project takes only a few seconds.
+    The same "done right" on gitlab can easily take 5 minutes!
