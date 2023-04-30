@@ -77,6 +77,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
+      racc (~> 1.4)
     pandoc-ruby (2.1.6)
     parallel (1.22.1)
     pastel (0.8.0)
@@ -85,7 +87,7 @@ GEM
       stringio
     public_suffix (5.0.0)
     racc (1.6.0)
-    rack (2.2.4)
+    rack (2.2.6.4)
     rack-livereload (0.3.17)
       rack
     rake (13.0.6)
@@ -114,6 +116,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bundler
