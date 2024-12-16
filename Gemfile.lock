@@ -73,9 +73,11 @@ GEM
       listen (~> 3.0)
       nanoc-cli (~> 4.11, >= 4.11.14)
       nanoc-core (~> 4.11, >= 4.11.14)
-    nokogiri (1.13.8-arm64-darwin)
+    nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.8-x86_64-darwin)
+    nokogiri (1.14.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     pandoc-ruby (2.1.6)
     parallel (1.22.1)
@@ -84,7 +86,7 @@ GEM
     psych (4.0.4)
       stringio
     public_suffix (5.0.0)
-    racc (1.6.0)
+    racc (1.6.2)
     rack (2.2.4)
     rack-livereload (0.3.17)
       rack
@@ -114,6 +116,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bundler
