@@ -66,12 +66,11 @@
           %div{class: "#{context}#{last==true ? ' last' : ''}"}
             %a{href: "#{i.reps[:default].path}"}<>= "#{i[:title]}"
       %div#main><
-        %h2.page><= @item[:page_title] || @item[:title] || "&nbsp;"
-        %div.chapter><= yield
+        %h2.page><
+          - _erbout << "#{@item[:page_title] || @item[:title] || '&nbsp;'}"
+        %div.chapter><
+          - _erbout << yield
         &nbsp;
       %footer><
-        last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | #{disqus_link(@item)} | Tags #{tags_for(@item, base_url: "/sitemap/tags/#")}
-      %div#disqus_thread
-        %script{type: "text/javascript"}= disqus_count('gizmomogwai')
-        %script{type: "text/javascript"}= disqus_script('gizmomogwai', @item[:title])
+        - _erbout << "last modified: #{@item[:mtime].strftime('%Y-%m-%d')} | Tags #{tags_for(@item, base_url: '/sitemap/tags/#')}"
     %canvas#map

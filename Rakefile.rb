@@ -39,4 +39,8 @@ task :restore_output => [:clean] do
   sh 'git clone git@github.com:gizmomogwai/gizmomogwai.github.com.git output'
 end
 
+desc "run local webserver"
+task :serve do
+  sh "ruby -run -ehttpd output -p8000"
+end
 task :default => :deploy_local

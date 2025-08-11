@@ -1,4 +1,4 @@
-include Nanoc::Helpers::Tagging
+use_helper Nanoc::Helpers::Tagging
 
 def get_parents(item, items)
   all = []

@@ -10,5 +10,6 @@
   - o.full_html = false
   - o.base_font_size = 20
   - o.tags = tags
-%div{style: "width: 400px; height: 300px; position: relative"}= output.to_html(root)
+%div{style: "width: 400px; height: 300px; position: relative"}
+  - _erbout << output.to_html(root)
 
