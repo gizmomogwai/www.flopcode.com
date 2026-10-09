@@ -1,0 +1,21 @@
+* board -> 1800g
+
+* indiana
+** mast to board 4xm8+nuts -> 85g
+** mast to airplane 2xm8 -> 49g
+** mast -> 2290
+** airplane -> 2820
+-> (+ 1800 85 49 2290 2820) -> 7044
+* betafoil
+** mast '24 -> 2495
+** mast '25 -> 2298
+** mast to board -> 38g
+** mast to airplane -> 38g
+** airplane -> (+ 5 455 1324 1204) -> 2988
+*** screws -> 5g
+*** stab -> 455g
+*** wing 1 -> 1324g
+*** wing2 -> 1204g
+-> (+ 1800 2298 38 38 2988) -> 7162
+
+
